@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Admin ADD Course</title>
+</head>
+<body>
+<h1>
+    Modify the selected course
+</h1>
+<hr>
+<br><br>
+<form action="/save3" method="post" th:each="p: ${course}">
+    <div>
+
+        <div><label for><b>Course Name:</b></label>
+            <input type="text" name="cname" required th:value="${p.cname}"></div><br>
+        <div><label for><b>CourseID:</b></label>
+            <input  type="text"  name="cid" required th:value="${p.cid}"></div><br>
+        <div><label for><b>Course Duration</b></label>
+            <input type="text"  name="cduration" required th:value="${p.cduration}"></div><br>
+        <div><label for><b>Starting Date:</b></label>
+            <input type="text"  name="csdate" required th:value="${p.csdate}"></div><br>
+    </div>
+    <button formaction="/save3" style="margin:15px;font-size:15px" type="submit" >Add</button>
+</form>
+</body>
+</html>

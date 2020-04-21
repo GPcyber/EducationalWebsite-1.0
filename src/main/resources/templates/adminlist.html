@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>
+    Courses List
+</h1>
+<table>
+
+
+    <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Duration</th>
+        <th>Starting Date</th>
+        <th>Course Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+
+    </tr>
+    <tr th:each="p: ${course}">
+        <td th:text="${p.cid}"></td>
+        <td th:text="${p.cname}"></td>
+        <td th:text="${p.cduration}"></td>
+        <td th:text="${p.csdate}"></td>
+        <td th:text="${p.cflag}"></td>
+        <td ><a th:href="@{'/modify/' +${p.cid}}">Modify</a></td>
+        <td ><a th:href="@{'/delete/' +${p.cid}}">Delete</a></td>
+        <td ><a th:href="@{'/activate/' +${p.cid}}">Activate</a></td>
+        <td ><a th:href="@{'/deactivate/' +${p.cid}}">Deactivate</a></td>
+
+
+    </tr>
+</table>
+</body>
+</html>

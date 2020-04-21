@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>
+    Active Courses List
+</h1>
+<table>
+
+
+    <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Duration</th>
+        <th>Starting Date</th>
+
+
+    </tr>
+    <tr th:each="p: ${activelist}">
+        <td th:text="${p.cid}"></td>
+        <td th:text="${p.cname}"></td>
+        <td th:text="${p.cduration}"></td>
+        <td th:text="${p.csdate}"></td>
+
+    </tr>
+</table>
+</body>
+</html>

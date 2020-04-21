@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+</head>
+<body>
+<div style="margin:10px;border:2px solid black">
+    <h2 align="center">Contact Us
+    </h2>
+   <p style="margin:10px;font-size:18px">
+   Address:
+   Expertz Lab,<br>
+       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspKaloor
+       <br>
+   Email: expertzlab.com
+   </p>
+</div>
+<form action="/home/Contact/submit" method="post">
+    <div style="margin:10px;border:2px solid black ">
+        <h2 align="center"> Enquiry
+            <p style="font-size:15px;">Please fill in this form to create an account.</p>
+        </h2>
+        <hr>
+        <br>
+        <label for><b>&nbsp&nbsp&nbspName:</b></label>
+        <br><br>
+        &nbsp&nbsp&nbsp <input type="text" name="ename"  required>
+
+        <br><br>
+        <label for><b>&nbsp&nbsp&nbspQualification:</b></label>
+        <br><br>
+        &nbsp&nbsp&nbsp <input type="text"  name="qualification" required>
+        <br><br>
+
+        <label for><b>&nbsp&nbsp&nbspMobile Number:</b></label>
+        <br><br>
+        &nbsp&nbsp&nbsp <input type="number"  name="mobilephone" required>
+        <br><br>
+
+        <label for><b>&nbsp&nbsp&nbspEmail:</b></label>
+        <br><br>
+        &nbsp&nbsp&nbsp <input type="text"  name="email" required>
+        <br><br>
+
+        <label for><b>&nbsp&nbsp&nbspCourse Interested:</b></label>
+        <br><br>
+        &nbsp&nbsp&nbsp <input type="text" name="courseID" required>
+        <br><br>
+
+        <button style="margin:15px;font-size:15px" type="submit" >Submit</button>
+
+    </div>
+</form>
+
+</body>
+<!--<script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("txtPassword").value;
+        var confirmPassword = document.getElementById("txtConfirmPassword").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
+</script> -->!
+</html>

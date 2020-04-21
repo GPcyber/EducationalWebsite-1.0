@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>
+    User List
+</h1>
+<h3>
+    Please See UserRoleID<br>
+    1=User  2=Admin
+</h3>
+<hr>
+<table>
+
+
+    <tr>
+        <th>User Role ID</th>&nbsp
+        <th>User Name</th>&nbsp
+        <th>User MobileNumber</th>&nbsp
+        <th>User Email</th>&nbsp
+        <th></th>&nbsp
+        <th></th>&nbsp
+
+
+    </tr>
+    <tr th:each="p: ${user}">
+        <td th:text="${p.uid}"></td>&nbsp
+        <td th:text="${p.uname}"></td>&nbsp
+        <td th:text="${p.umobilenumber}"></td>&nbsp
+        <td th:text="${p.uemail}"></td>&nbsp
+        <td><a th:href="@{'/admin/activate/' +${p.uemail}}">Activate as Admin</a></td>&nbsp
+        <td><a th:href="@{'/admin/deactivate/' +${p.uemail}}">Deactivate as Admin</a></td>&nbsp
+
+    </tr>
+</table>
+</body>
+</html>
