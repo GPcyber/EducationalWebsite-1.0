@@ -1,37 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Course Details</title>
+    <title>Courses</title>
+    <style>
+    .column{
+          float: left;
+        width: 25%;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid black;
+        }
+    </style>
+
 </head>
 <body>
-<h1 align="center">
-    Course Details
-</h1>
-<div style="border:2px solid black">
-    <h3 align="center" >
-        Course Name:
-    </h3>
-    <p style="margin:10px;">
-        Starting Date:<br>
-        Course Details:<br>
-        Course Description:<br>
-        <button style="margin:5px;font-size:15px" onclick="login.html"> Apply Now</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <button style="margin:5px;font-size:15px" onclick="Contact Us.html" >Enquire Now</button>
 
-    </p>
-</div>
-<div style="border:2px solid black">
-    <h3 align="center">
-        Course Name:
-    </h3>
-    <p style="margin:10px">
-        Starting Date:
-        <br>
-        Course Details:
-        <br>
-        Course Description:<br>
-        <button style="margin:5px;font-size:15px" onclick="login.html"> Apply Now</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <button style="margin:5px;font-size:15px" onclick="Contact Us.html">Enquire Now</button>
-    </p>
-</div>
+<h1 style="background-color:indigo;text-align:center;color:white;padding:30px">Courses Offering</h1><hr>
+<form action="/home" method="get">
+    <form action="/course" method="get">
+        <form action="/contact" method="get">
+            <form action="/login" method="get">
+                <nav style="background-color:violet">
+                    <div>
+                        <article>
+                            <p>
+                                <button formaction="/home" type="submit">Home</button>
+                                <button formaction="/course" type="submit">Courses</button>
+                                <button formaction="/contact" type="submit">Contact Us</button>
+                                <button formaction="/login" type="submit">Login/Signup</button>
+                            </p>
+                        </article>
+                    </div>
+                </nav>
+            </form></form></form></form>
+<hr>
+<form action="/contact/{cid}" method="get">
+    <form action="/login/{cid}" method="get">
+        <div class="column" th:each="c:${activelist}" style="background-color:cyan;padding:20px";>
+            <article>
+                <p >
+                <h3 th:text="${c.coname}" align="center"></h3><br>
+                <label hidden><b>Starting date : </b></label><label th:text="${c.cid}" hidden></label><br>
+                <label><b>Starting date : </b></label><label th:text="${c.csdate}"></label><br>
+                <label><b>Course Duration : </b></label><label th:text="${c.cduration}"></label><br>
+                <label><b>Course Detail : </b> </label><label th:text="${c.cdetail}"></label><br>
+                <button formaction=" @{'/login/' + ${c.cid}}" type="submit">Apply Now</button>
+                <button formaction="@{'/contact/'+${c.cid}}"  type="submit">Enquire Now</button>
+
+            </article>
+            </p>
+        </div>
+    </form></form>
 </body>
 </html>

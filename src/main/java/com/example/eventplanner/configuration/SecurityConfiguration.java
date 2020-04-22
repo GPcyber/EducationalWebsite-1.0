@@ -34,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance());;
+                .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 
     @Override
@@ -50,13 +50,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/home").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
+                .antMatchers("/user/signup").permitAll()
+
 
 
                 .antMatchers("/home/admin/**").hasAuthority("admin").anyRequest()
              //           .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/home")
+                .defaultSuccessUrl("/home/userpage")
                 .usernameParameter("uemail")
                 .passwordParameter("upassword")
                 .and().logout()

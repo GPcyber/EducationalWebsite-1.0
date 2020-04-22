@@ -13,6 +13,8 @@
         <th>Course Duration</th>
         <th>Starting Date</th>
         <th>Course Status</th>
+        <th>Course Breif</th>
+        <th>Course Details</th>
         <th></th>
         <th></th>
         <th></th>
@@ -25,6 +27,8 @@
         <td th:text="${p.cduration}"></td>
         <td th:text="${p.csdate}"></td>
         <td th:text="${p.cflag}"></td>
+        <td th:text="${p.cbrief}"></td>
+        <td th:text="${p.cdetail}"></td>
         <td ><a th:href="@{'/modify/' +${p.cid}}">Modify</a></td>
         <td ><a th:href="@{'/delete/' +${p.cid}}">Delete</a></td>
         <td ><a th:href="@{'/activate/' +${p.cid}}">Activate</a></td>

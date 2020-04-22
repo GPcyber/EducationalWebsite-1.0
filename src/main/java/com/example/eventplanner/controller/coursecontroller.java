@@ -25,110 +25,89 @@ public class coursecontroller {
     Courserepository courserepository;
     @Autowired
     Courseservice service;
-/*
-    @GetMapping("/save2")
-    //@ResponseBody
-    public String saveCourse(@Param("cid") Long cid, @Param("cname") String cname, @Param("cduration") String cduration, @Param("csdate") String csdate) {
 
-        Course course = new Course();
-        course.setCid(cid);
-        course.setCname(cname);
-        course.setCduration(cduration);
-        course.setCsdate(csdate);
-
-        courserepository.save(course);
-        return "Entered Successfully ";
-    }
-  //  @GetMapping("/admin/courseDetails")
-  //  public String showcourse(Model model)
-
-  //  {
-  //      model.addAttribute("adminlist",courserepository.findAll());
-   //     return "adminlist";
-   //  }
 
     @PostMapping("/save3")
-   // @ResponseBody
-    public String saveCourse2(@ModelAttribute Course course) {
+     public String saveCourse2(@ModelAttribute Course course) {
         courserepository.save(course);
-        return "redirect:/admin/courseDetails";
+        return "redirect:/admin/courseDetails";    }
+
+
+    @GetMapping("home/admin/adminhome/adminlist")
+    public String getCourseList(Model model){
+        model.addAttribute("adminlist",courserepository.findAll());
+        return "adminlist";
+
     }
 
-   /* @PostMapping("/save4")
-
-    public String saveCourse4(@ModelAttribute Course course,@PathVariable("cid") String id) {
+    @GetMapping("/delete/{cid}")
+    public String deleteCourse(@PathVariable("cid") String id )
+    {
         courserepository.deleteById(Long.parseLong(id));
-        courserepository.save(course);
         return "redirect:/admin/courseDetails";
-    }*/
-
-    @GetMapping("/home/login/admin")
-    public String admin() {
-        return "admin";
     }
 
-    @PostMapping("/admin/signup")
-    public String signupLogin(@ModelAttribute User user)
+    @RequestMapping(method = RequestMethod.GET,path = "/admin/courseDetails")
+    public String getAllCourses(Model model)
     {
-        user.setUid(Long.parseLong("1"));
-        userRepository.save(user);
-        return "redirect:/home/";
-    }
-    @GetMapping("/admin/userlist")
-    public String AdminUserList(Model model)
-    {   List<User>entity =userRepository.findAll();
-        model.addAttribute("user",entity);
-        return "adminuserlist.html"; }
-
-
-    @GetMapping("/home/forgetpasswordhome")
-    public String gethome()
-    {
-        return "forgetpasswordhome.html";
+        List<Course> list = service.getAllCourses();
+        model.addAttribute("course", list);
+        return "adminlist";
     }
 
-    @RequestMapping (path={"/forgetpassword/"},method = RequestMethod.POST)
-    //updation display seems not to be working
-    public  String forgetpassword(@RequestParam("uemail")Optional<String> mail,Model model) throws Exception
+    @RequestMapping(path = {"/modify/{cid}"})
+    public String neweditEmployeeById(Model model, @PathVariable("cid") Optional<Long> cid) throws Exception {
+        if (cid.isPresent()) {
+            Course entity = service.getCourseById(cid.get());
 
-    {
-        if (mail.isPresent())
+            model.addAttribute("course", entity);
 
-    {       User entity = service.getUserbyId(mail.get());
-            model.addAttribute("user", entity);
         } else {
-            model.addAttribute("user", new User());
+            model.addAttribute("course", new Course());
         }
-        return "forgetpassword";
+        return "modifycourseadd";
     }
 
-    @PostMapping("/admin/signuppass")
-    public String userLogin1(@ModelAttribute User user)
+    @ResponseBody
+    @GetMapping("/activate/{cid}")
+    public String activate(@PathVariable ("cid") Optional<Long> id) throws Exception{
+        if (id.isPresent()) {
+            Course entity = service.getCourseById(id.get());
+            // entity.setCflag(Long.parseLong("1"));
+            entity.setCflag(("1"));
+            courserepository.save(entity);
+            return "Activated Successufully";
+        }
+        else
+            return "sorry this course is not activated";
+    }
+
+    @ResponseBody
+    @GetMapping("/deactivate/{cid}")
+    public String deactivate(@PathVariable ("cid") Optional<Long> id) throws Exception{
+        if (id.isPresent()) {
+            Course entity = service.getCourseById(id.get());
+            //entity.setCflag(Long.parseLong("0"));
+            entity.setCflag((""));
+            courserepository.save(entity);
+            return "Deactivated Successufully";
+        }
+        else
+            return "sorry this course is not deactivated";
+    }
+    @GetMapping("/admin/activecourses")
+    public String activecourse( Model model) throws Exception
     {
-        userRepository.save(user);
-        return "redirect:/home/";
+        //4 slashes the other method
+        // List<Course> entity=service.getAllCourses();
+        //// List entity=service.getCourseBycflag();
+        // Course course1=new Course();
+        //List<Course> list=courserepository.findAll();
+        // Course cnewcourse= list.getClass();
+        //if(list.contains(course1.getCflag()))
+        List entity=service.getActiveCourse();
+        model.addAttribute("activelist",entity);
+        return "activelist";
     }
-    @GetMapping("/login/user")
-    public String userLogin(@ModelAttribute User user) {
 
-
-      /* List<User>entity=userRepository.findAll();
-        for(User u:entity)
-        {
-            boolean s=((user.getUemail().equals(u.getUemail())) && (user.getUemail().equals(u.getUemail())));
-          // boolean s=((u.getUemail().equals(user.getUemail())) && (u.getUpassword().equals(user.getUpassword())));
-
-            if (s==true)
-                return "redirect:/home/";
-
-            else
-                continue;
-        }
-        //if (s==false)
-
-            return "adminlist";
-
-    }*/
-       return "homeafterlogin";
-    }
 }

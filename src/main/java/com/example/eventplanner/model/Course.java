@@ -15,17 +15,21 @@ public class Course {
     String csdate;
 //  public   Long cflag;
     public String cflag;
+    String cbrief;
+    String cdetail;
 
     public Course(String cflag) {
         this.cflag = cflag;
     }
 
-    public Course(Long cid, String cname, String cduration, String csdate, String cflag) {
+    public Course(Long cid, String cname, String cduration, String csdate, String cflag, String cbrief, String cdetail) {
         this.cid = cid;
         this.cname = cname;
         this.cduration = cduration;
         this.csdate = csdate;
         this.cflag = cflag;
+        this.cbrief = cbrief;
+        this.cdetail = cdetail;
     }
 
     public String getCflag() {
@@ -40,7 +44,22 @@ public class Course {
         return cname;
     }
 
-   /* public Course(Long cid, String cname, String cduration, String csdate, Long cflag) {
+    public String getCbrief() {
+        return cbrief;
+    }
+
+    public void setCbrief(String cbrief) {
+        this.cbrief = cbrief;
+    }
+
+    public String getCdetail() {
+        return cdetail;
+    }
+
+    public void setCdetail(String cdetail) {
+        this.cdetail = cdetail;
+    }
+/* public Course(Long cid, String cname, String cduration, String csdate, Long cflag) {
         this.cid = cid;
         this.cname = cname;
         this.cduration = cduration;

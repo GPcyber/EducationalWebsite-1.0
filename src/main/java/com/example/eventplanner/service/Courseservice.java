@@ -3,7 +3,6 @@ package com.example.eventplanner.service;
 
 import com.example.eventplanner.model.Course;
 import com.example.eventplanner.model.User;
-import com.example.eventplanner.repository.Courseinterface;
 import com.example.eventplanner.repository.Courserepository;
 import com.example.eventplanner.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

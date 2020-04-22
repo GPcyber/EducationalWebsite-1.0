@@ -1,53 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <style>
+
+/* Header/Logo Title */
+.header {
+  padding: 60px;
+  text-align: center;
+  background: darkblue;
+  color: white;
+  font-size: 30px;
+}
+
+/* Create  columns that floats next to each other */
+.column {
+  float: left;
+   width : 25%;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
+
+}
+
+</style>
 </head>
 <body>
-<h1 align="center">
-    ExpertzLaB
-</h1>
-<button style="margin:20px;font-size:20px" onclick="home.html" >Home Page</button>&nbsp
-<button style="margin:20px;font-size:20px" onclick="CourseDetails.html" >Course</button>&nbsp
-        <button style="margin:20px;font-size:20px" onclick="home.html" >Contact Us</button>
 
 
-<button  style="margin-left:1280px;font-size:20px"onclick="home.html" >Login</button>
-
-<div style="margin:10px;border:2px solid black ">
-    <h4 style="margin:3px;font-size:30px">Institution Details</h4>
-    <br>
-    <br>
-    <p style="margin: 3px">
-        We are institution based in Kochi kaloor,......................................
-    </p>
-
+<div class="header"><h1>expertZlabz</h1></div>
+<hr>
+<form action="/home" method="get">
+    <form action="/course" method="get">
+        <form action="/contact" method="get">
+            <form action="/Login" method="get">
+                <nav style="background-color:violet">
+                    <div>
+                        <article>
+                            <p>
+                                <button formaction="/home" type="submit">Home</button>
+                                <button formaction="/course" type="submit">Courses</button>
+                                <button formaction="/contact" type="submit">Contact Us</button>
+                                <button formaction="/login" type="submit">Login/Signup</button>
+                            </p>
+                        </article>
+                    </div>
+                </nav>
+            </form></form></form></form>
+<hr>
+<div style="padding:20px;">
+    <article>
+        <p style="text-align:center">
+            Expertzlabz is an IT finishing school with a difference.We train on Gen 4.0 technologies,
+            which is the hottest in-demand technologies. We aim to be part of the up-skill & re-skill
+            movement within the IT fraternity today.We are the cog in the wheel when it comes to the
+            train the vast technical pool, on the latest Gen 4.0 technologies.
+        </p>
+    </article>
 </div>
-<div  style="margin:10px">
-  <p style="font-size:45px">Courses</p>
+<hr>
+<form action="/newhome/newcourse" method="get">
+    <div class="column" th:each="c:${activecourse}" style="background-color:yellow;padding:20px;" align="center">
+        <article>
+            <p >
+            <h3 th:text="${c.coname}"></h3>
+            <label><b> Starting on </b></label><label th:text="${c.csdate}"></label><br>
+            <label><b> Course Briefing : </b></label><label th:text="${c.cbrief}"></label>
+            <button formaction="/newhome/newcourse"> View More</button>
+            </p>
 
-<div style="border:2px solid black">
-    <h3 style="margin:5px">
-        Big Data
-    </h3>
-    <p style="margin: 5px">
-        Big data is course.....................
-    </p>
-    <button  style="margin: 5px" onclick="coursedetails.html">Course Details</button>
-</div>
-    <br>
-
-<div style="border:2px solid black ">
-    <h3 style="margin:5px;">
-        Python
-    </h3>
-    <p style="margin: 5px">
-
-    Python is course.....................
-    </p>
-    <button style="margin: 5px" onclick="coursedetails.html">Course Details</button>
-</div>
-</div>
+        </article>
+    </div>
+</form>
 </body>
 </html>

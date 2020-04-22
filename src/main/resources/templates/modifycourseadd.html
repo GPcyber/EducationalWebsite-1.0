@@ -21,8 +21,12 @@
             <input type="text"  name="cduration" required th:value="${p.cduration}"></div><br>
         <div><label for><b>Starting Date:</b></label>
             <input type="text"  name="csdate" required th:value="${p.csdate}"></div><br>
+        <div><label for><b>Course Briefing:</b></label>
+             <input type="text" name="cbrief" th:value="${p.cbrief}" required></div><br>
+        <div><label for><b>Course Details:</b></label>
+             <input type="text" name="cdtail" th:value="${p.cdetail}" required></div><br>
     </div>
-    <button formaction="/save3" style="margin:15px;font-size:15px" type="submit" >Add</button>
+    <button formaction="/save3" style="margin:15px;font-size:15px" type="submit" >Modify</button>
 </form>
 </body>
 </html>

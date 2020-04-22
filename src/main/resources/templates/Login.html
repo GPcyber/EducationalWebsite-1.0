@@ -36,9 +36,9 @@ width:50%
 <body>
 <br><br>
 <nav style="background-color:pink">
-    <a href="home.html">Home</a> |
-    <a href="courses.html">Courses</a> |
-    <a href="contact.html">Contact Us</a> |
+    <a href="/home.html" onclick="/home.html" >Home</a> |
+    <a href="/home.html" onclick="/home.html">Courses</a> |
+    <a href="/home.html" onclick="/home.html">Contact Us</a> |
 </nav>
 <div class="column" >
     <h2>Existing User?</h2><hr>
@@ -63,7 +63,7 @@ width:50%
 
     <br>
 </div>
-<form action="/admin/signup" method="post">
+<form action="/user/signup" method="post">
     <div class="column" >
         <h2 align="center">New User?</h2>
         <hr>
@@ -79,7 +79,7 @@ width:50%
             <input type="password" placeholder="Enter Password" name="upassword" required></div><br>
         <div><label for><b>Confirm Password:</b></label>
             <input type="password" placeholder="Confirm Password" name="psw-repeat" required></div><br>
-        <button style="margin:15px;font-size:15px" formaction="/admin/signup" type="submit" >SignUp</button>
+        <button style="margin:15px;font-size:15px" formaction="/user/signup" type="submit" >SignUp</button>
     </div>
 </form>
 </body>
