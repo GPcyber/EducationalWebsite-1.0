@@ -4,6 +4,7 @@ import org.hibernate.annotations.common.reflection.XMethod;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "user" )
@@ -15,8 +16,22 @@ public class User  {
     String umobilenumber;
     @Id
     String uemail;
-
     String upassword;
+
+  /*  public User(Set<Course> newcourse) {
+        this.newcourse = newcourse;
+    }
+
+    @ManyToMany(mappedBy = "products")
+    Set<Course> newcourse;
+
+    public Set<Course> getNewcourse() {
+        return newcourse;
+    }
+
+    public void setNewcourse(Set<Course> newcourse) {
+        this.newcourse = newcourse;
+    }*/
 
     public User()
     {}

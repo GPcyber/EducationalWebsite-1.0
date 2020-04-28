@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Courses</title>
@@ -11,10 +11,24 @@
         padding: 10px;
         border: 1px solid black;
         }
+    .button {
+         background-color: green;
+         border: none;
+         color: white;
+         padding: 20px 34px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 20px;
+         margin: 4px 2px;
+         cursor: pointer;
+         }
+
     </style>
 
 </head>
 <body>
+<div sec:authorize="isAuthenticated()">User<span sec:authentication="name"></span></div>
 
 <h1 style="background-color:indigo;text-align:center;color:white;padding:30px">Courses Offering</h1><hr>
 <form action="/home" method="get">
@@ -35,21 +49,30 @@
                 </nav>
             </form></form></form></form>
 <hr>
-<form action="/contact/{cid}" method="get">
-    <form action="/login/{cid}" method="get">
-        <div class="column" th:each="c:${activelist}" style="background-color:cyan;padding:20px";>
+<!--4th update -->
+<!--<form th:action="/contact/{cid}" method="get">
+    <form action="/login/{cid}" method="get">-->
+        <!-- 4th update-->
+        <div class="column" th:each="c:${activecourse}" style="background-color:cyan;padding:20px";>
             <article>
                 <p >
-                <h3 th:text="${c.coname}" align="center"></h3><br>
-                <label hidden><b>Starting date : </b></label><label th:text="${c.cid}" hidden></label><br>
+                <!-- 4th update -->
+                <h3 th:text="${c.cname}" align="center"></h3><br>
+                <label hidden><b>Course ID : </b></label><label th:text="${c.cid}" hidden></label><br>
                 <label><b>Starting date : </b></label><label th:text="${c.csdate}"></label><br>
                 <label><b>Course Duration : </b></label><label th:text="${c.cduration}"></label><br>
                 <label><b>Course Detail : </b> </label><label th:text="${c.cdetail}"></label><br>
-                <button formaction=" @{'/login/' + ${c.cid}}" type="submit">Apply Now</button>
-                <button formaction="@{'/contact/'+${c.cid}}"  type="submit">Enquire Now</button>
+                <a th:href="@{'/apply/' + ${c.cid}}" onclick="myfunction()" class="button">Apply Now</a>
+                <a th:href="@{'/contact/' + ${c.cid}}" class="button">Enquire Now</a>
+                <!--<button formaction="@{'/login/' + ${c.cid}}"  type="submit">Apply Now</button>
+                <button formaction="@{'/contact/'+ ${c.cid}}"  th:name="action" th:value="${c.cid}"type="submit">Enquire Now</button>-->
 
             </article>
             </p>
+            <script>
+            function myfunction() {
+            alert("Applied Successfully");}
+            </script>
         </div>
     </form></form>
 </body>

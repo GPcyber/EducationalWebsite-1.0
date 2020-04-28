@@ -46,11 +46,11 @@ width:50%
 <div class="header"><h1>Admin Page</h1></div>
 <br><br>
 
-
+<form th:action="@{/logout}" method="post">
 <form action="/home" method="get">
     <form action="/course" method="get">
         <form action="/contact" method="get">
-            <form action="/Login" method="get">
+
                 <nav style="background-color:Blue">
                     <div>
                         <article>
@@ -58,20 +58,27 @@ width:50%
                                 <button formaction="/home" type="submit">Home</button>
                                 <button formaction="/course" type="submit">Courses</button>
                                 <button formaction="/contact" type="submit">Contact Us</button>
-                                <button formaction="/login" type="submit">Logout</button>
+                                <button type="submit">Logout</button>
                             </p>
                         </article>
                     </div>
                 </nav>
             </form></form></form></form>
 <br>
+
 <form action="/admin/courseDetails" method="get">
     <form action="/admin/activecourses" method="get">
+        <form action="/admin/appliedcourse" method="get">
+
+
+
         <button  formaction="/admin/courseDetails" style="margin:15px;font-size:15px" type="submit" >Course List</button>
         <button  formaction="/admin/activecourses" style="margin:15px;font-size:15px" type="submit" >Active Courses</button>
+        <button  formaction="/admin/appliedcourse" style="margin:15px;font-size:15px" type="submit">Applied Course </button>
 
         </div>
-    </form></form>
+
+    </form></form></form>
 <form action="/save3" method="post">
 
     <div class="column" >

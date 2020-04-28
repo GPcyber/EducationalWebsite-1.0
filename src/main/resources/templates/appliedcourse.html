@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>
+   Applied Courses
+</h1>
+<table>
+
+
+    <tr>
+        <th>User Name:</th>
+        <th>User Email:</th>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Duration</th>
+        <th>Starting Date</th>
+
+
+
+    </tr>
+    <tr th:each="p: ${appliedcourse}">
+        <td th:text="${p.uname}"></td>
+        <td th:text="${p.uemail}"></td>
+        <td th:text="${p.cid}"></td>
+        <td th:text="${p.cname}"></td>
+        <td th:text="${p.cduration}"></td>
+        <td th:text="${p.csdate}"></td>
+
+    </tr>
+</table>
+</body>
+</html>

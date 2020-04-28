@@ -1,9 +1,11 @@
 package com.example.eventplanner.controller;
 import com.example.eventplanner.model.Course;
 import com.example.eventplanner.model.User;
+import com.example.eventplanner.model.appliedcourse;
 import com.example.eventplanner.model.enquirySubmit;
 import com.example.eventplanner.repository.Courserepository;
 import com.example.eventplanner.repository.UserRepository;
+import com.example.eventplanner.repository.appliedRepository;
 import com.example.eventplanner.repository.enquiryRepository;
 import com.example.eventplanner.service.Courseservice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class usercontroller {
     @Autowired
     Courserepository courserepository;
     @Autowired
+    appliedRepository appliedrepository;
+    @Autowired
     enquiryRepository enquiryrepository;
     @Autowired
     Courseservice service;
@@ -33,7 +37,8 @@ public class usercontroller {
     {
         user.setUid(Long.parseLong("1"));
         userRepository.save(user);
-        return "userpage";
+        //return "userpage";
+        return "home.html";
     }
     @GetMapping("/userpage")
     public String getuserhomepage()
@@ -121,4 +126,21 @@ public class usercontroller {
         enquiryrepository.deleteById((id));
         return "redirect:/admin/enquirydetails";
     }
+    /////////////////////////////////////////
+    // This will not display multiple courses for auser who applied multiple times
+    @GetMapping("/appliedcourse")
+    public String getAppliedCoursesListUser(Model model)
+    {   List<appliedcourse>entity =appliedrepository.findAll();
+        model.addAttribute("appliedcourse",entity);
+        return "appliedcourse.html";
+    }
+    ///////////////////////////a
+    ///// Admin sees all who applied
+    @GetMapping("/admin/appliedcourse")
+    public String getAppliedCoursesListAdmin(Model model)
+    {   List<appliedcourse>entity =appliedrepository.findAll();
+        model.addAttribute("appliedcourse",entity);
+        return "appliedcourse.html";
+    }
+
 }

@@ -1,15 +1,14 @@
 package com.example.eventplanner.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
 public class Course {
 
     @Id
-    Long cid;
+    public Long cid;
     String cname;
     String cduration;
     String csdate;
@@ -17,6 +16,27 @@ public class Course {
     public String cflag;
     String cbrief;
     String cdetail;
+
+    /*@ManyToMany()
+    @JoinTable(
+            name = "course_user",
+            joinColumns = {@JoinColumn(name = "cid")},
+            inverseJoinColumns = {@JoinColumn(name = "uemail")}
+
+    )
+    Set<User> newuser;
+
+    public Course(Set<User> newuser) {
+        this.newuser = newuser;
+    }
+
+    public Set<User> getNewuser() {
+        return newuser;
+    }
+
+    public void setNewuser(Set<User> newuser) {
+        this.newuser = newuser;
+    }*/
 
     public Course(String cflag) {
         this.cflag = cflag;

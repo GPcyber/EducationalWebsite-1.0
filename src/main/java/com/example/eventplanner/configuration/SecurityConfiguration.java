@@ -42,15 +42,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         //http.authorizeRequests().anyRequest().permitAll();
 
-
                 http.
                 authorizeRequests()
                 .antMatchers("/").permitAll()
 
                 .antMatchers("/home").permitAll()
+                .antMatchers("/course").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/registration").permitAll()
                 .antMatchers("/user/signup").permitAll()
+                .antMatchers("/contact").permitAll()
+                .antMatchers("/viewmore/course").permitAll()
 
 
 
@@ -63,7 +64,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordParameter("upassword")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/").and().exceptionHandling()
+                .logoutSuccessUrl("/home").and().exceptionHandling()
                 .accessDeniedPage("/access-denied");
 //spring will redirsct to its homepage where thelogin page was accesed
     }

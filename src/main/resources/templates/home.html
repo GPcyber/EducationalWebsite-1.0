@@ -61,14 +61,15 @@
     </article>
 </div>
 <hr>
-<form action="/newhome/newcourse" method="get">
+<!-- 4th change-->
+<form action="/viewmore/course" method="get">
     <div class="column" th:each="c:${activecourse}" style="background-color:yellow;padding:20px;" align="center">
         <article>
             <p >
-            <h3 th:text="${c.coname}"></h3>
+            <h3 th:text="${c.cname}"></h3>
             <label><b> Starting on </b></label><label th:text="${c.csdate}"></label><br>
             <label><b> Course Briefing : </b></label><label th:text="${c.cbrief}"></label>
-            <button formaction="/newhome/newcourse"> View More</button>
+            <button formaction="/viewmore/course"> View More</button>
             </p>
 
         </article>

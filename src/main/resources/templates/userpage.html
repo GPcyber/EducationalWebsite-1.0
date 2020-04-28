@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>User page</title>
@@ -36,7 +36,8 @@ width:50%
 <br>
 <h1 style="background-color:lightgreen;padding:20px; text-align: center">User Page</h1>
 <br>
-
+<div sec:authorize="isAuthenticated()">
+    Welcome :  <span sec:authentication="name"></span></div>
 <form action="/userpage" method="get">
     <form action="/course" method="get">
         <form action="/contact" method="get">
@@ -60,25 +61,29 @@ width:50%
     <h2>Courses</h2>
     <hr>
     <br><br>
-    <form action="">
+    <form action="/appliedcourse" method="get">
         <form action="/course">
 
-    <button style="margin:15px;font-size:15px">Course Details</button>
+    <button formaction="/appliedcourse" style="margin:15px;font-size:15px">Applied Course</button>
     <button formaction="/course" type="submit" style="margin:15px;font-size:15px">Apply for New</button>
     </form> </form>
 
     <br>
 </div>
+
+
 <div class="column">
-    <div align="right" th:each="u:${user}">
-        <label>Welcome :</label>
-        <input type="text" name="uname" th:value="${u.uname}" readonly>
-        <form action="/newhome/newcourse/login" method="get">
+    <!--<div align="right" th:each="u:${user}">
+
+        <input type="text" name="uname" th:value="${u.uname}" readonly>-->
+        <form th:action="@{/logout}" method="post">
             <form action="/home/forgetpasswordhome" method="get">
                 <button formaction="/home/forgetpasswordhome">Change password</button>
-                 <button formaction="/newhome/newcourse/login" style="margin:15px;font-size:15px" >Logout</button>
+                 <!--<button formaction="/logout" style="margin:15px;font-size:15px" type="submit" >Logout</button>-->
+                <button type="submit">Logout</button>
+                <!--<input type="submit" value="Logout">-->
             </form></form>
-    </div>
+    <!--</div>-->
     <br><br><br><br>
     <h2 style="text-align: center">Fee Payment</h2>
     <br>
