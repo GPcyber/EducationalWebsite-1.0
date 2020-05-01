@@ -47,7 +47,6 @@ public class Courseservice  {
         return flitercourse;
 
     }
-
     public Course getCourseById(Long cid) throws Exception {
         Optional<Course> course = courserepository.findById(cid);
         {

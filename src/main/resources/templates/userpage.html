@@ -37,7 +37,28 @@ width:50%
 <h1 style="background-color:lightgreen;padding:20px; text-align: center">User Page</h1>
 <br>
 <div sec:authorize="isAuthenticated()">
-    Welcome :  <span sec:authentication="name"></span></div>
+    Welcome :  <span sec:authentication="name"></span>
+
+    <form th:action="@{/logout}" method="post">
+
+    <!--<button formaction="/logout" style="margin:15px;font-size:15px" type="submit" >Logout</button>-->
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp
+        <button type="submit">Logout</button>
+    <!--<input type="submit" value="Logout">-->
+</form></div>
 <form action="/userpage" method="get">
     <form action="/course" method="get">
         <form action="/contact" method="get">
@@ -76,13 +97,9 @@ width:50%
     <!--<div align="right" th:each="u:${user}">
 
         <input type="text" name="uname" th:value="${u.uname}" readonly>-->
-        <form th:action="@{/logout}" method="post">
-            <form action="/home/forgetpasswordhome" method="get">
-                <button formaction="/home/forgetpasswordhome">Change password</button>
-                 <!--<button formaction="/logout" style="margin:15px;font-size:15px" type="submit" >Logout</button>-->
-                <button type="submit">Logout</button>
-                <!--<input type="submit" value="Logout">-->
-            </form></form>
+    <form action="/home/forgetpasswordhome" method="get">
+        <button formaction="/home/forgetpasswordhome">Change password</button></form>
+
     <!--</div>-->
     <br><br><br><br>
     <h2 style="text-align: center">Fee Payment</h2>

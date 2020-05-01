@@ -2,6 +2,7 @@ package com.example.eventplanner.controller;
 import com.example.eventplanner.model.Course;
 import com.example.eventplanner.model.User;
 import com.example.eventplanner.model.appliedcourse;
+import com.example.eventplanner.model.appliedcourse;
 import com.example.eventplanner.model.enquirySubmit;
 import com.example.eventplanner.repository.Courserepository;
 import com.example.eventplanner.repository.UserRepository;
@@ -9,12 +10,16 @@ import com.example.eventplanner.repository.appliedRepository;
 import com.example.eventplanner.repository.enquiryRepository;
 import com.example.eventplanner.service.Courseservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 /////////////////////////////////////This controller deals with both user and admin functions
 @Controller
 public class usercontroller {
@@ -33,10 +38,12 @@ public class usercontroller {
     //user signup
 
     @PostMapping("/user/signup")
-    public String signupLogin(@ModelAttribute User user)
+    public String signupLogin(@ModelAttribute User user,Model model) throws Exception
     {
         user.setUid(Long.parseLong("1"));
         userRepository.save(user);
+        List entity=service.getActiveCourse();
+        model.addAttribute("activecourse",entity);
         //return "userpage";
         return "home.html";
     }
@@ -82,7 +89,7 @@ public class usercontroller {
         }
         return "redirect:/admin/userlist";
     }
-    @GetMapping("/home/forgetpasswordhome")
+    @GetMapping("home/forgetpasswordhome")
     public String gethome()
     {
         return "forgetpasswordhome.html";
@@ -130,16 +137,33 @@ public class usercontroller {
     // This will not display multiple courses for auser who applied multiple times
     @GetMapping("/appliedcourse")
     public String getAppliedCoursesListUser(Model model)
-    {   List<appliedcourse>entity =appliedrepository.findAll();
-        model.addAttribute("appliedcourse",entity);
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+       Optional <User> entity =userRepository.findById(currentPrincipalName);
+       if (entity.isPresent())
+       {
+        User newuser=entity.get();
+        Set<Course> c1= newuser.getCourses();
+       /* appliedcourse ac=new appliedcourse();
+        ac.getUserinfo().add(newuser);
+        ac.getCourseinfo().add((Course) c1);
+        appliedrepository.save(ac);*/
+        model.addAttribute("appliedcourse",c1);
+
+       }
         return "appliedcourse.html";
     }
     ///////////////////////////a
     ///// Admin sees all who applied
     @GetMapping("/admin/appliedcourse")
     public String getAppliedCoursesListAdmin(Model model)
-    {   List<appliedcourse>entity =appliedrepository.findAll();
-        model.addAttribute("appliedcourse",entity);
+    {  // List<appliedcourse>entity =appliedrepository.findAll();
+        //model.addAttribute("appliedcourse",entity);
+        List<User>u1=userRepository.findAll();
+
+        model.addAttribute("userdetails",u1);
         return "appliedcourse.html";
     }
 

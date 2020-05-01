@@ -4,6 +4,8 @@ import org.hibernate.annotations.common.reflection.XMethod;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,14 +13,29 @@ import java.util.Set;
 public class User  {
 
     Long uid;
-
     String uname;
     String umobilenumber;
     @Id
     String uemail;
     String upassword;
 
-  /*  public User(Set<Course> newcourse) {
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "course_user",
+            joinColumns = {
+                    @JoinColumn(name = "uemail", referencedColumnName = "uemail",
+                            nullable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "cid", referencedColumnName = "cid",
+                            nullable = false)})
+    private Set<Course> courses = new HashSet<>();
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+/*  public User(Set<Course> newcourse) {
         this.newcourse = newcourse;
     }
 

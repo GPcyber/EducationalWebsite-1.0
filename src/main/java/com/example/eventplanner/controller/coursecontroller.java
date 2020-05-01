@@ -1,7 +1,6 @@
 package com.example.eventplanner.controller;
 
-//import com.example.Eduinstitute.model.Course;
-//import com.example.Eduinstitute.repositry.Courserepository;
+
 import com.example.eventplanner.model.Course;
 import com.example.eventplanner.model.User;
 import com.example.eventplanner.repository.Courserepository;

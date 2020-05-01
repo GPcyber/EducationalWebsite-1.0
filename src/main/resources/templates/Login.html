@@ -79,8 +79,13 @@ width:50%
             <input type="password" placeholder="Enter Password" name="upassword" required></div><br>
         <div><label for><b>Confirm Password:</b></label>
             <input type="password" placeholder="Confirm Password" name="psw-repeat" required></div><br>
-        <button style="margin:15px;font-size:15px" formaction="/user/signup" type="submit" >SignUp</button>
+        <button style="margin:15px;font-size:15px" formaction="/user/signup" type="submit" onclick="myfunction()" >SignUp</button>
     </div>
 </form>
 </body>
+<script>
+function myfunction() {
+alert("Submitted Successfully");
+
+}</script>
 </html>

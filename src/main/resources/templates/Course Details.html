@@ -28,7 +28,7 @@
 
 </head>
 <body>
-<div sec:authorize="isAuthenticated()">User<span sec:authentication="name"></span></div>
+<div sec:authorize="isAuthenticated()">User:<span sec:authentication="name"></span></div>
 
 <h1 style="background-color:indigo;text-align:center;color:white;padding:30px">Courses Offering</h1><hr>
 <form action="/home" method="get">
@@ -62,7 +62,8 @@
                 <label><b>Starting date : </b></label><label th:text="${c.csdate}"></label><br>
                 <label><b>Course Duration : </b></label><label th:text="${c.cduration}"></label><br>
                 <label><b>Course Detail : </b> </label><label th:text="${c.cdetail}"></label><br>
-                <a th:href="@{'/apply/' + ${c.cid}}" onclick="myfunction()" class="button">Apply Now</a>
+              <div sec:authorize="isAuthenticated()"><a th:href="@{'/apply/' + ${c.cid}}" onclick="myfunction()" class="button">Apply Now</a></div>
+              <div sec:authorize="isAnonymous()"><a href="/login"  class="button">Apply Now</a></div>
                 <a th:href="@{'/contact/' + ${c.cid}}" class="button">Enquire Now</a>
                 <!--<button formaction="@{'/login/' + ${c.cid}}"  type="submit">Apply Now</button>
                 <button formaction="@{'/contact/'+ ${c.cid}}"  th:name="action" th:value="${c.cid}"type="submit">Enquire Now</button>-->

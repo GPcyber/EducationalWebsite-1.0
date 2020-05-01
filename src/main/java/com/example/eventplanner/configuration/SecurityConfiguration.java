@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/viewmore/course").permitAll()
 
 
-
+                .antMatchers("/apply/{cid}").hasAuthority("user").and().authorizeRequests()
                 .antMatchers("/home/admin/**").hasAuthority("admin").anyRequest()
              //           .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
@@ -62,7 +62,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/home/userpage")
                 .usernameParameter("uemail")
                 .passwordParameter("upassword")
-                .and().logout()
+                .and().logout().invalidateHttpSession(true)
+                .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/home").and().exceptionHandling()
                 .accessDeniedPage("/access-denied");

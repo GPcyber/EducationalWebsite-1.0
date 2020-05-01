@@ -1,39 +1,40 @@
 package com.example.eventplanner.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+import com.example.eventplanner.model.User;
+import com.example.eventplanner.model.Course;
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name="user_course")
 public class appliedcourse {
+
     @Id
-    String uemail;
-    String uname;
+    Integer sno;
+    String username;
+    String useremail;
     Long cid;
     String cname;
-    String cduration;
-    String csdate;
+    String cdetail;
 
-    public appliedcourse()
-    {
 
+
+    public String getUsername() {
+        return username;
     }
 
-    public String getUemail() {
-        return uemail;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setUemail(String uemail) {
-        this.uemail = uemail;
+    public String getUseremail() {
+        return useremail;
     }
 
-    public String getUname() {
-        return uname;
-    }
-
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setUseremail(String useremail) {
+        this.useremail = useremail;
     }
 
     public Long getCid() {
@@ -52,31 +53,30 @@ public class appliedcourse {
         this.cname = cname;
     }
 
-    public String getCduration() {
-        return cduration;
+    public String getCdetail() {
+        return cdetail;
     }
 
-    public void setCduration(String cduration) {
-        this.cduration = cduration;
+    public void setCdetail(String cdetail) {
+        this.cdetail = cdetail;
     }
 
-    public String getCsdate() {
-        return csdate;
-    }
-
-    public void setCsdate(String csdate) {
-        this.csdate = csdate;
-    }
-
-
-
-    public appliedcourse(String uemail, String uname, Long cid, String cname, String cduration, String csdate) {
-        this.uemail = uemail;
-        this.uname = uname;
+    public appliedcourse(String username, String useremail, Long cid, String cname, String cdetail) {
+        this.username = username;
+        this.useremail = useremail;
         this.cid = cid;
         this.cname = cname;
-        this.cduration = cduration;
-        this.csdate = csdate;
-
+        this.cdetail = cdetail;
     }
+
+
+    public appliedcourse(Integer sno) {
+        this.sno = sno;
+    }
+
+    public appliedcourse() {
+    }
+
+
 }
+

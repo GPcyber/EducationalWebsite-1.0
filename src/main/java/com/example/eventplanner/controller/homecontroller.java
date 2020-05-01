@@ -2,23 +2,24 @@ package com.example.eventplanner.controller;
 
 import com.example.eventplanner.model.Course;
 import com.example.eventplanner.model.User;
-import com.example.eventplanner.model.appliedcourse;
+//import com.example.eventplanner.model.appliedcourse;
 import com.example.eventplanner.model.enquirySubmit;
 import com.example.eventplanner.repository.Courserepository;
 import com.example.eventplanner.repository.UserRepository;
-import com.example.eventplanner.repository.appliedRepository;
+//import com.example.eventplanner.repository.appliedRepository;
 import com.example.eventplanner.repository.enquiryRepository;
 import com.example.eventplanner.service.Courseservice;
 //import jdk.nashorn.internal.runtime.regexp.joni.ast.StringNode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import javax.transaction.Transactional;
+import java.util.*;
 
 @Controller
 public class homecontroller {
@@ -29,8 +30,8 @@ public class homecontroller {
     enquiryRepository enquiryrepository;
     @Autowired
     Courseservice service;
-    @Autowired
-    appliedRepository appliedRepository;
+   /* @Autowired
+    appliedRepository appliedRepository;*/
     @Autowired
     UserRepository userRepository;
 
@@ -94,8 +95,19 @@ public class homecontroller {
     @GetMapping("/contact/{cid}")
     public String getenquiryfromcourses(Model model,@PathVariable("cid") Optional<Long> cid  ) throws Exception
     {
-
-       if (cid.isPresent()) {
+        // try and pass the values of user and his email address
+      /* Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        Optional<User> newuser=userRepository.findById(currentPrincipalName);
+        { if (newuser.isPresent())
+        {User newuser1=service.getUserbyId(currentPrincipalName);
+          {  if (cid.isPresent()) {
+           Course entity = service.getCourseById(cid.get());
+           enquirySubmit enquirysubmit=new enquirySubmit(entity.getCid(),newuser1.getUname(),Integer.parseInt(newuser1.getUmobilenumber()),currentPrincipalName);
+           model.addAttribute("enquirysubmitdetails", enquirysubmit);
+        }
+        */
+        if (cid.isPresent()) {
            Course entity = service.getCourseById(cid.get());
            model.addAttribute("course", entity);
 
@@ -105,25 +117,52 @@ public class homecontroller {
     /* This code is for apply course controller*/
 
     @GetMapping("/apply/{cid}")
+    @Transactional
     public String applyCourse(Model model,@PathVariable("cid") Optional<Long> cid ) throws Exception
     {
      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
      String currentPrincipalName = authentication.getName();
+     String CurrentName=getusername();
+     if(CurrentName.isEmpty())
+     {
+         return "error.html";
+     }
+     else
+     {
      Optional<User> newuser=userRepository.findById(currentPrincipalName);
-     { if (newuser.isPresent())
-       {
-        User newuser1=service.getUserbyId(currentPrincipalName);
-        String authname= newuser1.getUname();
-         if(cid.isPresent())
+     {
+       if (newuser.isPresent())
+        {
+          User newuser1=service.getUserbyId(currentPrincipalName);
+
+          String authname= newuser1.getUname();
+            if(cid.isPresent())
            {
             Course entity = service.getCourseById(cid.get());
-            appliedcourse newappliedcourse= new appliedcourse(currentPrincipalName,authname,entity.getCid(),entity.getCname(),entity.getCduration(),entity.getCsdate());
-            appliedRepository.save(newappliedcourse);
+           /* appliedcourse newappliedcourse= new appliedcourse(currentPrincipalName,authname,entity.getCid(),entity.getCname(),entity.getCduration(),entity.getCsdate());
+            appliedRepository.save(newappliedcourse);*/
+            Set<Course> ent=newuser1.getCourses();
+            ent.add(entity);
+            userRepository.save(newuser1);
 
            }
 
-       }
+        }
      }
         return "userpage.html";
+     }
+    }
+    public String getusername()
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        {
+        if (!(authentication instanceof AnonymousAuthenticationToken))
+        {
+            String currentUserName = authentication.getName();
+            return currentUserName;
+        }
+        }
+        String PrincipalName = "Hello this user is not signed in";
+        return PrincipalName;
     }
 }

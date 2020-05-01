@@ -1,6 +1,8 @@
 package com.example.eventplanner.model;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,7 +19,17 @@ public class Course {
     String cbrief;
     String cdetail;
 
-    /*@ManyToMany()
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
+    private Set<User> users = new HashSet<>();
+
+    public Collection<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+/*@ManyToMany()
     @JoinTable(
             name = "course_user",
             joinColumns = {@JoinColumn(name = "cid")},

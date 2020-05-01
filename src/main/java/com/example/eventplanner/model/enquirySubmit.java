@@ -73,6 +73,13 @@ public class enquirySubmit {
  {
 
  }
+/*
+    public enquirySubmit(Long courseID, String ename, Integer mobilephone, String email) {
+        this.courseID = courseID;
+        this.ename = ename;
+        this.mobilephone = mobilephone;
+        this.email = email;
+    }*/
 
     public enquirySubmit(Long courseID, Long eid, String ename, String qualification, Integer mobilephone, String email) {
         this.courseID = courseID;
