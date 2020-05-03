@@ -12,14 +12,27 @@ import org.hibernate.annotations.ManyToAny;
 public class appliedcourse {
 
     @Id
-    Integer sno;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    public Integer sno;
+
+
     String username;
     String useremail;
     Long cid;
     String cname;
     String cdetail;
+   public String cdate;
 
-
+    public appliedcourse(Integer sno, String username, String useremail, Long cid, String cname, String cdetail, String cdate) {
+        this.sno = sno;
+        this.username = username;
+        this.useremail = useremail;
+        this.cid = cid;
+        this.cname = cname;
+        this.cdetail = cdetail;
+        this.cdate = cdate;
+    }
 
     public String getUsername() {
         return username;
@@ -61,13 +74,6 @@ public class appliedcourse {
         this.cdetail = cdetail;
     }
 
-    public appliedcourse(String username, String useremail, Long cid, String cname, String cdetail) {
-        this.username = username;
-        this.useremail = useremail;
-        this.cid = cid;
-        this.cname = cname;
-        this.cdetail = cdetail;
-    }
 
 
     public appliedcourse(Integer sno) {

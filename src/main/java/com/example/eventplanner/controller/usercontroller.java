@@ -45,7 +45,7 @@ public class usercontroller {
         List entity=service.getActiveCourse();
         model.addAttribute("activecourse",entity);
         //return "userpage";
-        return "home.html";
+        return "Login.html";
     }
     @GetMapping("/userpage")
     public String getuserhomepage()
@@ -98,7 +98,6 @@ public class usercontroller {
     @RequestMapping (path={"/forgetpassword/"},method = RequestMethod.POST)
     //updation display seems not to be working
     public  String getforgetpassword(@RequestParam("uemail")Optional<String> mail,Model model) throws Exception
-
     {
         if (mail.isPresent())
 
@@ -150,10 +149,10 @@ public class usercontroller {
         ac.getUserinfo().add(newuser);
         ac.getCourseinfo().add((Course) c1);
         appliedrepository.save(ac);*/
-        model.addAttribute("appliedcourse",c1);
+        model.addAttribute("userappliedcourse",c1);
 
        }
-        return "appliedcourse.html";
+        return "userappliedcourse.html";
     }
     ///////////////////////////a
     ///// Admin sees all who applied
@@ -161,10 +160,10 @@ public class usercontroller {
     public String getAppliedCoursesListAdmin(Model model)
     {  // List<appliedcourse>entity =appliedrepository.findAll();
         //model.addAttribute("appliedcourse",entity);
-        List<User>u1=userRepository.findAll();
-
-        model.addAttribute("userdetails",u1);
-        return "appliedcourse.html";
+     //   List<appliedcourse>u1=appliedrepository.findAll();
+        List<appliedcourse>entity=appliedrepository.findAll();
+        model.addAttribute("userdetails",entity);
+        return "adminappliedcourse.html";
     }
 
 }

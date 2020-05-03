@@ -7,22 +7,22 @@
 <table>
 
 <tr>
+    <th>Sno</th>
     <th>User Name:</th>
     <th>User Email:</th>
     <th>Course ID</th>
     <th>Course Name</th>
-    <th>Course Duration</th>
-    <th>Starting Date</th>
-
+    <th>Course Start Date</th>
+    <th>Course Detail</th>
 </tr>
 <tr th:each="p: ${userdetails}">
-    <td th:text="${p.uname}"></td>
-    <td th:text="${p.uemail}"></td>
+    <td th:text="${p.sno}"></td>
+    <td th:text="${p.username}"></td>
+    <td th:text="${p.useremail}"></td>
     <td th:text="${p.cid}"></td>
     <td th:text="${p.cname}"></td>
-    <td th:text="${p.cduration}"></td>
-    <td th:text="${p.csdate}"></td>
-
+    <td th:text="${p.cdate}"></td>
+    <td th:text="${p.cdetail}"></td>
 </tr>
 </table>
 </body>

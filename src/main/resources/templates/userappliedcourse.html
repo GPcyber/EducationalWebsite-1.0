@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>
+    Applied Courses
+</h1>
+<table>
+
+    <tr>
+
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Duration</th>
+        <th>Starting Date</th>
+        <th>Course Details</th>
+
+    </tr>
+    <tr th:each="p: ${userappliedcourse}">
+
+        <td th:text="${p.cid}"></td>
+        <td th:text="${p.cname}"></td>
+        <td th:text="${p.cduration}"></td>
+        <td th:text="${p.csdate}"></td>
+        <td th:text="${p.cdetail}"></td>
+
+    </tr>
+</table>
+</body>
+</html>
