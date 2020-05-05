@@ -1,11 +1,6 @@
 package com.example.eventplanner.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-import com.example.eventplanner.model.User;
-import com.example.eventplanner.model.Course;
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name="user_course")
@@ -16,38 +11,47 @@ public class appliedcourse {
     @Column(name = "id", updatable = false, nullable = false)
     public Integer sno;
 
+    @Column(name = "name")
+    String applieduser;
 
-    String username;
-    String useremail;
+    @Column(name = "email")
+    String appliedemail;
+
     Long cid;
+
+    @Column(name = "coursename")
     String cname;
+
+    @Column(name = "coursedetail")
     String cdetail;
+
+    @Column(name = "startdate")
    public String cdate;
 
-    public appliedcourse(Integer sno, String username, String useremail, Long cid, String cname, String cdetail, String cdate) {
+    public appliedcourse(Integer sno, String applieduser, String appliedemail, Long cid, String cname, String cdetail, String cdate) {
         this.sno = sno;
-        this.username = username;
-        this.useremail = useremail;
+        this.applieduser = applieduser;
+        this.appliedemail = appliedemail;
         this.cid = cid;
         this.cname = cname;
         this.cdetail = cdetail;
         this.cdate = cdate;
     }
 
-    public String getUsername() {
-        return username;
+    public String getApplieduser() {
+        return applieduser;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setApplieduser(String applieduser) {
+        this.applieduser = applieduser;
     }
 
-    public String getUseremail() {
-        return useremail;
+    public String getAppliedemail() {
+        return appliedemail;
     }
 
-    public void setUseremail(String useremail) {
-        this.useremail = useremail;
+    public void setAppliedemail(String appliedemail) {
+        this.appliedemail = appliedemail;
     }
 
     public Long getCid() {

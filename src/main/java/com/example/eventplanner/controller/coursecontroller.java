@@ -29,7 +29,7 @@ public class coursecontroller {
     @PostMapping("/save3")
      public String saveCourse2(@ModelAttribute Course course) {
         courserepository.save(course);
-        return "redirect:/admin/courseDetails";    }
+        return "redirect:/home/admin";    }
 
 
     @GetMapping("home/admin/adminhome/adminlist")
@@ -67,7 +67,7 @@ public class coursecontroller {
         return "modifycourseadd";
     }
 
-    @ResponseBody
+    //@ResponseBody
     @GetMapping("/activate/{cid}")
     public String activate(@PathVariable ("cid") Optional<Long> id) throws Exception{
         if (id.isPresent()) {
@@ -75,13 +75,13 @@ public class coursecontroller {
             // entity.setCflag(Long.parseLong("1"));
             entity.setCflag(("1"));
             courserepository.save(entity);
-            return "Activated Successufully";
+            return "redirect:/admin/courseDetails";
         }
         else
             return "sorry this course is not activated";
     }
 
-    @ResponseBody
+    //@ResponseBody
     @GetMapping("/deactivate/{cid}")
     public String deactivate(@PathVariable ("cid") Optional<Long> id) throws Exception{
         if (id.isPresent()) {
@@ -89,7 +89,7 @@ public class coursecontroller {
             //entity.setCflag(Long.parseLong("0"));
             entity.setCflag((""));
             courserepository.save(entity);
-            return "Deactivated Successufully";
+            return "redirect:/admin/courseDetails";
         }
         else
             return "sorry this course is not deactivated";

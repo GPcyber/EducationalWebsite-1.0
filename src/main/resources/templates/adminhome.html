@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,6 +46,21 @@ width:50%
 <div class="header"><h1>Admin Page</h1></div>
 <br><br>
 
+<div sec:authorize="isAuthenticated()" style="background-color:lightgrey;color:black;padding:10px">
+    <b>Welcome :  </b><span sec:authentication="name">
+
+    </span>
+    <form action="/home/userpage" method="get">
+        <button formaction="/home/userpage" type="submit">User Home</button></form>
+    <div align="right">
+
+        <form th:action="@{/logout}" method="post">
+
+            <!--<button formaction="/logout" style="margin:15px;font-size:15px" type="submit" >Logout</button>-->
+            <button type="submit" >Logout</button>
+            <!--<input type="submit" value="Logout">-->
+        </form></div></div>
+
 <form th:action="@{/logout}" method="post">
 <form action="/home" method="get">
     <form action="/course" method="get">
@@ -69,9 +84,6 @@ width:50%
 <form action="/admin/courseDetails" method="get">
     <form action="/admin/activecourses" method="get">
         <form action="/admin/appliedcourse" method="get">
-
-
-
         <button  formaction="/admin/courseDetails" style="margin:15px;font-size:15px" type="submit" >Course List</button>
         <button  formaction="/admin/activecourses" style="margin:15px;font-size:15px" type="submit" >Active Courses</button>
         <button  formaction="/admin/appliedcourse" style="margin:15px;font-size:15px" type="submit">Applied Course </button>

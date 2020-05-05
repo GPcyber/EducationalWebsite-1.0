@@ -11,12 +11,22 @@ public class Course {
 
     @Id
     public Long cid;
+
+    @Column(name = "coursename")
     String cname;
+
+    @Column(name = "courseduration")
     String cduration;
+
+    @Column(name = "Startingdate")
     String csdate;
 //  public   Long cflag;
     public String cflag;
+
+    @Column(name = "briefing")
     String cbrief;
+
+    @Column(name = "details")
     String cdetail;
 
     @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
@@ -33,7 +43,7 @@ public class Course {
     @JoinTable(
             name = "course_user",
             joinColumns = {@JoinColumn(name = "cid")},
-            inverseJoinColumns = {@JoinColumn(name = "uemail")}
+            inverseJoinColumns = {@JoinColumn(name = "useremail")}
 
     )
     Set<User> newuser;

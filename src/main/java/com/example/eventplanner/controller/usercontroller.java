@@ -47,6 +47,8 @@ public class usercontroller {
         //return "userpage";
         return "Login.html";
     }
+
+
     @GetMapping("/userpage")
     public String getuserhomepage()
     {
@@ -89,7 +91,8 @@ public class usercontroller {
         }
         return "redirect:/admin/userlist";
     }
-    @GetMapping("home/forgetpasswordhome")
+
+/*    @GetMapping("home/forgetpasswordhome")
     public String gethome()
     {
         return "forgetpasswordhome.html";
@@ -107,8 +110,27 @@ public class usercontroller {
             model.addAttribute("user", new User());
         }
         return "forgetpassword";
+    }*/
+
+    @GetMapping("home/forgetpasswordhome")
+    public String gethome()
+    {
+        return "forgetpasswordhome.html";
     }
 
+    @RequestMapping (path={"/forgetpassword/"},method = RequestMethod.POST)
+//updation display seems not to be working
+    public String getforgetpassword(@RequestParam("useremail")Optional<String> mail,Model model) throws Exception
+    {
+        if (mail.isPresent())
+
+        { User entity = service.getUserbyId(mail.get());
+            model.addAttribute("user", entity);
+        } else {
+            model.addAttribute("user", new User());
+        }
+        return "forgetpassword";
+    }
 
     @PostMapping("/admin/signuppass")
     public String userLogin1(@ModelAttribute User user)

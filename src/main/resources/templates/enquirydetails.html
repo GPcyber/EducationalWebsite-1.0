@@ -10,10 +10,10 @@ border: 1px solid black;
     </style>
 </head>
 <body>
-<div class="header"><h2>Enquiry Details</h2></div>
-<hr>
-<br>
+<header><h2><i>Enquiry Details</i></h2></header>
+<br><hr><br><br>
 <div align="center">
+
     <table>
         <tr>
             <th>Course ID </th>
@@ -28,7 +28,7 @@ border: 1px solid black;
         <tr th:each="e:${enquiry}">
           <td th:text="${e.courseID}"></td>
             <td th:text="${e.eid}"></td>
-            <td th:text="${e.ename}"></td>
+            <td th:text="${e.name}"></td>
             <td th:text="${e.mobilephone}"></td>
             <td th:text="${e.email}"></td>
             <td th:text="${e.qualification}"></td>

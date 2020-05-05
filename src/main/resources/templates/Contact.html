@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +35,17 @@ width:50%
 </head>
 <body>
 <div class="header"><h1>Contact Page</h1></div>
-<br><br>
+<br>
+<hr>
+<div sec:authorize="isAuthenticated()" style="background-color:lightgrey;color:black;padding:10px">
+    <b>Welcome :  </b><span sec:authentication="name">
+    </span>
+    <form action="/home/userpage" method="get">
+        <button formaction="/home/userpage" type="submit">User Home</button></form>
+    <div align="right">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form></div></div>
 
 <form action="/home" method="get">
     <form action="/course" method="get">
@@ -66,27 +76,27 @@ width:50%
         </p>
     </article>
 </div>
+<div class="column" >
 <form action="/contact/enquirysubmit" method="post">
-    <div class="column" >
         <h2 align="center"> Enquiry</h2>
         <hr>
         <br>
+    <!--
+            <div th:each="c:${enquirysubmitdetails}"><label><b>Name:</b></label>
+                <input type="text" name="ename" th:value="${c.ename}" readonly></div><br>
+            <div th:each="c:${enquirysubmitdetails}"><label><b>Qualification:</b></label>
+                <input type="text"  name="qualification" th:value="${c.qualification}" required></div><br>
+            <div th:each="c:${enquirysubmitdetails}"><label><b>Mobile Number:</b></label>
+                <input type="text"  name="mobilephone" th:value="${c.mobilephone}" readonly></div><br>
+            <div th:each="c:${enquirysubmitdetails}"><label><b>Email:</b></label>
+                <input type="email"  name="email" th:value="${c.email}" readonly></div><br>
+            <div th:each="c:${enquirysubmitdetails}" >
+                <label><b>Course ID: </b></label>
+                <input  type="text"  name="cid" th:value="${c.CourseID}"  readonly></div><br>-->
 
-        <div th:each="c:${enquirysubmitdetails}"><label><b>Name:</b></label>
-            <input type="text" name="ename" th:value="${c.ename}" readonly></div><br>
-        <div th:each="c:${enquirysubmitdetails}"><label><b>Qualification:</b></label>
-            <input type="text"  name="qualification" th:value="${c.qualification}" required></div><br>
-        <div th:each="c:${enquirysubmitdetails}"><label><b>Mobile Number:</b></label>
-            <input type="text"  name="mobilephone" th:value="${c.mobilephone}" readonly></div><br>
-        <div th:each="c:${enquirysubmitdetails}"><label><b>Email:</b></label>
-            <input type="email"  name="email" th:value="${c.email}" readonly></div><br>
-        <div th:each="c:${enquirysubmitdetails}" >
-            <label><b>Course ID: </b></label>
-            <input  type="text"  name="cid" th:value="${c.CourseID}"  readonly></div><br>
 
-<!--
         <div><label><b>Name:</b></label>
-            <input type="text" name="ename" required></div><br>
+            <input type="text" name="name" required></div><br>
         <div><label><b>Qualification:</b></label>
             <input type="text"  name="qualification" required></div><br>
         <div><label><b>Mobile Number:</b></label>
@@ -95,11 +105,12 @@ width:50%
             <input type="email"  name="email" required></div><br>
         <div th:each="c:${course}" >
             <label><b>Course ID: </b></label>
-            <input  type="text"  name="cid" th:value="${c.cid}"  readonly></div><br>-->
+            <input  type="text"  name="courseID" th:value="${c.cid}"  readonly></div><br>
 
-        <button style="margin:15px;font-size:15px"  formaction="/contact/enquirysubmit" type="submit" onclick="myfunction()" >Submit</button>
-    </div>
+        <button style="margin:15px;font-size:15px"  formaction="/contact/enquirysubmit" type="submit" onclick="myfunction()">Submit</button>
 </form>
+</div>
+
 <script>
 function myfunction() {
   alert("Submitted Successfully");

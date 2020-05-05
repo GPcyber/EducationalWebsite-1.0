@@ -1,6 +1,5 @@
 package com.example.eventplanner.model;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.*;
@@ -14,11 +13,13 @@ public class enquirySubmit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     Long eid;
 
-    String ename;
+
+    String name;
     String qualification;
-    Integer mobilephone;
+    Long mobilephone;
     String email;
 
     public Long getEid() {
@@ -37,12 +38,12 @@ public class enquirySubmit {
         this.courseID = courseID;
     }
 
-    public String getEname() {
-        return ename;
+    public String getName() {
+        return name;
     }
 
-    public void setEname(String ename) {
-        this.ename = ename;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getQualification() {
@@ -53,11 +54,11 @@ public class enquirySubmit {
         this.qualification = qualification;
     }
 
-    public Integer getMobilephone() {
+    public Long getMobilephone() {
         return mobilephone;
     }
 
-    public void setMobilephone(Integer mobilephone) {
+    public void setMobilephone(Long mobilephone) {
         this.mobilephone = mobilephone;
     }
 
@@ -74,17 +75,17 @@ public class enquirySubmit {
 
  }
 
-    public enquirySubmit(Long courseID, String ename, Integer mobilephone, String email) {
+    public enquirySubmit(Long courseID, String name, Long mobilephone, String email) {
         this.courseID = courseID;
-        this.ename = ename;
+        this.name = name;
         this.mobilephone = mobilephone;
         this.email = email;
     }
 
-    public enquirySubmit(Long courseID, Long eid, String ename, String qualification, Integer mobilephone, String email) {
+    public enquirySubmit(Long courseID, Long eid, String name, String qualification, Long mobilephone, String email) {
         this.courseID = courseID;
         this.eid = eid;
-        this.ename = ename;
+        this.name = name;
         this.qualification = qualification;
         this.mobilephone = mobilephone;
         this.email = email;

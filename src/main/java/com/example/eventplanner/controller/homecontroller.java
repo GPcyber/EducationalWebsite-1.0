@@ -19,8 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.*;
@@ -77,7 +75,7 @@ public class homecontroller {
        return  "Login.html";
     }
 
-    @GetMapping("home/userpage")
+    @GetMapping("/home/userpage")
     public String getUserpage()
     {
         return  "userpage.html";
@@ -109,11 +107,11 @@ public class homecontroller {
 
             {User newuser1=service.getUserbyId(currentPrincipalName);
                 {
-                    if (cid.isPresent()) {
+                    /*if (cid.isPresent()) {
                         Course entity = service.getCourseById(cid.get());
-                        enquirySubmit enquirysubmit = new enquirySubmit(entity.getCid(), newuser1.getUname(), Integer.parseInt(newuser1.getUmobilenumber()), currentPrincipalName);
+                        enquirySubmit enquirysubmit = new enquirySubmit(entity.getCid(), newuser1.getUsername(), Long.parseLong(newuser1.getUsermobile()), currentPrincipalName);
                         model.addAttribute("enquirysubmitdetails", enquirysubmit);
-                    }
+                    }*/
 
                     if (cid.isPresent()) {
                         Course entity = service.getCourseById(cid.get());
@@ -147,12 +145,12 @@ public class homecontroller {
         {
           User newuser1=service.getUserbyId(currentPrincipalName);
 
-          String authname= newuser1.getUname();
+          String authname= newuser1.getUsername();
             if(cid.isPresent())
            {
             Course entity = service.getCourseById(cid.get());
             //appliedcourse newappliedcourse= new appliedcourse(currentPrincipalName,authname,entity.getCid(),entity.getCname(),entity.getCduration());
-               entityManager.createNativeQuery("INSERT INTO user_course (username, useremail ,cid , cname, cdate, cdetail) VALUES (?,?,?,?,?,?)")
+               entityManager.createNativeQuery("INSERT INTO user_course (Name, Email ,cid , CourseDetail, CourseName, StartDate) VALUES (?,?,?,?,?,?)")
 
                      //  .setParameter(1,@GeneratedValue(strategy = GenerationType.IDENTITY))
                        .setParameter(1,authname)

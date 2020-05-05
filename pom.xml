@@ -58,7 +58,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- 3rd update add dependency to get username in userpage-->
+		<!-- 3rd update add dependency to get applieduser in userpage-->
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>

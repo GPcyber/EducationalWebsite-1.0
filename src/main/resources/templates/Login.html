@@ -46,10 +46,10 @@ width:50%
     <form action="/login" method="post" >
 
     <label for><b>Email:</b></label>
-    <input type="email"  placeholder="Enter Email" name="uemail" required>
+    <input type="email"  placeholder="Enter Email" name="useremail" required>
     <br><br>
     <label for><b>Password:</b></label>
-    <input type="password" placeholder="Enter Password" name="upassword" required><br>
+    <input type="password" placeholder="Enter Password" name="userpassword" required><br>
 
    <br>
         <input type="submit" value="Login">
@@ -70,22 +70,31 @@ width:50%
         <br>
 
         <div><label for><b>Name:</b></label>
-            <input type="text" name="uname" required></div><br>
+            <input type="text" name="username" required></div><br>
         <div><label for><b>Mobile Number:</b></label>
-            <input  type="text"  name="umobilenumber" required></div><br>
+            <input  type="text"  name="usermobile" required></div><br>
         <div><label for><b>Email:</b></label>
-            <input type="text"  name="uemail" placeholder="Enter Email"required></div><br>
+            <input type="text"  name="useremail" placeholder="Enter Email" required></div><br>
         <div><label for><b>Password:</b></label>
-            <input type="password" placeholder="Enter Password" name="upassword" required></div><br>
+            <input type="password" placeholder="Enter Password" name="userpassword" id="txtPassword" required></div><br>
         <div><label for><b>Confirm Password:</b></label>
-            <input type="password" placeholder="Confirm Password" name="psw-repeat" required></div><br>
-        <button style="margin:15px;font-size:15px" formaction="/user/signup" type="submit" onclick="myfunction()" >SignUp</button>
+            <input type="password" placeholder="Confirm Password" name="psw-repeat" id="txtConfirmPassword" required></div><br>
+        <button style="margin:15px;font-size:15px" formaction="/user/signup" type="submit" onclick="Validate();myfunction()" >SignUp</button>
     </div>
 </form>
 </body>
 <script>
 function myfunction() {
 alert("Submitted Successfully.Please login with your email and password now");
-
-}</script>
+}
+function Validate() {
+var password = document.getElementById("txtPassword").value;
+var confirmPassword = document.getElementById("txtConfirmPassword").value;
+if (password != confirmPassword) {
+alert("Passwords do not match.");
+return false;
+}
+return true;
+}
+</script>
 </html>

@@ -1,10 +1,9 @@
 package com.example.eventplanner.model;
 
-import org.hibernate.annotations.common.reflection.XMethod;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.annotation.Transient;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,17 +11,31 @@ import java.util.Set;
 @Table(name = "user" )
 public class User  {
 
+
     Long uid;
-    String uname;
-    String umobilenumber;
+
+    @Column(name = "name")
+    String username;
+
+    @Column(name = "mobileumber")
+    String usermobile;
+
     @Id
-    String uemail;
-    String upassword;
+    String useremail;
+
+//    @Column(name = "Password")
+//    @Length(min = 6, message = "*Your password must have at least 6 characters")
+//    @Transient
+    String userpassword;
+
+/*    @Length(min = 6, message = "*Your password must have at least 6 characters")
+    @Transient
+    String cnfirmpassword;  */
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "course_user",
             joinColumns = {
-                    @JoinColumn(name = "uemail", referencedColumnName = "uemail",
+                    @JoinColumn(name = "useremail", referencedColumnName = "useremail",
                             nullable = false)},
             inverseJoinColumns = {
                     @JoinColumn(name = "cid", referencedColumnName = "cid",
@@ -61,41 +74,41 @@ public class User  {
         this.uid = uid;
     }
 
-    public String getUname() {
-        return uname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public User(Long uid, String uname, String umobilenumber, String uemail, String upassword) {
+    public User(Long uid, String username, String usermobile, String useremail, String userpassword) {
         this.uid = uid;
-        this.uname = uname;
-        this.umobilenumber = umobilenumber;
-        this.uemail = uemail;
-        this.upassword = upassword;
+        this.username = username;
+        this.usermobile = usermobile;
+        this.useremail = useremail;
+        this.userpassword = userpassword;
     }
 
-    public String getUmobilenumber() {
-        return umobilenumber;
+    public String getUsermobile() {
+        return usermobile;
     }
 
-    public void setUmobilenumber(String umobilenumber) {
-        this.umobilenumber = umobilenumber;
+    public void setUsermobile(String usermobile) {
+        this.usermobile = usermobile;
     }
 
-    public String getUemail() { return uemail; }
+    public String getUseremail() { return useremail; }
 
-    public void setUemail(String uemail) {
-        this.uemail = uemail;
+    public void setUseremail(String useremail) {
+        this.useremail = useremail;
     }
 
-    public String getUpassword() {
-        return upassword;
+    public String getUserpassword() {
+        return userpassword;
     }
 
-    public void setUpassword(String upassword) {
-        this.upassword = upassword;
+    public void setUserpassword(String userpassword) {
+        this.userpassword = userpassword;
     }
 }

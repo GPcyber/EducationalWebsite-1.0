@@ -28,9 +28,18 @@
 
 </head>
 <body>
-<div sec:authorize="isAuthenticated()">User:<span sec:authentication="name"></span></div>
+<h1 style="background-color:indigo;text-align:center;color:white;padding:30px">Courses Offering</h1>
 
-<h1 style="background-color:indigo;text-align:center;color:white;padding:30px">Courses Offering</h1><hr>
+<div sec:authorize="isAuthenticated()" style="background-color:lightgrey;color:black;padding:10px">
+    <b>Welcome :  </b><span sec:authentication="name">
+    </span>
+    <form action="/home/userpage" method="get">
+        <button formaction="/home/userpage" type="submit">User Home</button></form>
+    <div align="right">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form></div></div>
+<hr>
 <form action="/home" method="get">
     <form action="/course" method="get">
         <form action="/contact" method="get">

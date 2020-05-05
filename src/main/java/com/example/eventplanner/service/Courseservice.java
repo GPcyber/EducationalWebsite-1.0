@@ -93,7 +93,7 @@ public class Courseservice  {
     }
 
     public User getUserbyemail(User user) {
-        if(user.getUemail()  == null)
+        if(user.getUseremail()  == null)
         {
             user = userRepository.save(user);
 
@@ -101,13 +101,13 @@ public class Courseservice  {
         }
         else
         {
-            Optional<User> employee = userRepository.findById(user.getUemail());
+            Optional<User> employee = userRepository.findById(user.getUseremail());
 
             if(employee.isPresent())
             {
                 User cnewcourse= employee.get();
 
-                cnewcourse.setUpassword(user.getUpassword());
+                cnewcourse.setUserpassword(user.getUserpassword());
 
                 cnewcourse = userRepository.save(cnewcourse);
 

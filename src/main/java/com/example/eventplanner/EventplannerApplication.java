@@ -49,10 +49,10 @@ public class EventplannerApplication {
 
 				User user1=new User();
 				user1.setUid(Long.parseLong("2"));
-				user1.setUname("admin");
-				user1.setUemail("admin@expertzlab");
-				user1.setUpassword("1234");
-				user1.setUmobilenumber("7897897897");
+				user1.setUsername("admin");
+				user1.setUseremail("admin@expertzlab");
+				user1.setUserpassword("1234");
+				user1.setUsermobile("7897897897");
 
 				userrepository.save(user1);
 
