@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/adminuserlist.css">
+    <title>Userlist</title>
+</head>
+<body>
+<div>    
+<header>
+<h2>
+    User List
+</h2>
+</header>
+<h4 style="color: white;font-weight:36px;">&nbsp&nbsp
+UserRoleID <br><br><br>   &nbsp&nbsp 1 User &nbsp&nbsp|&nbsp&nbsp 2 Admin<hr>
+</h4>
+</div>
+<div align="center">
+    <form action="/home/admin" method="get">
+    <table>
+        <tr>
+            <th>User Role ID</th>&nbsp
+            <th>User Name</th>&nbsp
+            <th>User MobileNumber</th>&nbsp
+            <th>User Email</th>&nbsp
+        </tr>
+        <tr th:each="p: ${user}">
+            <td th:text="${p.uid}"></td>&nbsp
+            <td th:text="${p.username}"></td>&nbsp
+            <td th:text="${p.usermobile}"></td>&nbsp
+            <td th:text="${p.useremail}"></td>&nbsp
+            <td><a th:href="@{'/admin/activate/' +${p.useremail}}">Activate as Admin</a></td>&nbsp
+            <td><a th:href="@{'/admin/deactivate/' +${p.useremail}}">Deactivate as Admin</a></td>&nbsp
+        </tr>
+    </table>
+        <br><br>
+     <button class="button3" formaction="/home/admin">Admin Home</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/userappliedcourse.css">
+    <title>Usercourselist</title>
+</head>
+<body>
+    <br><br><br>
+<header>
+<h2>
+    Applied Courses
+</h2>
+</header>
+<br><hr><br><br>
+<div align="center">
+    <form action="/userpage" method="get">
+<table>
+    <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Duration</th>
+        <th>Starting Date</th>
+        <th>Course Details</th>
+    </tr>
+    <tr th:each="p: ${userappliedcourse}">
+        <td th:text="${p.cid}"></td>
+        <td th:text="${p.cname}"></td>
+        <td th:text="${p.cduration}"></td>
+        <td th:text="${p.csdate}"></td>
+        <td th:text="${p.cdetail}"></td>
+    </tr>
+</table>
+    <br>
+    <button class="userhome" formaction="/userpage">User Home</button></form>
+</div>
+</body>
+</html>

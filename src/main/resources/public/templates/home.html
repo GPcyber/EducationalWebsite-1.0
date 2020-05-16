@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:cu="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css"/>
+</head>
+<body>
+<div class="container">
+    <span class="text1">Welcome To</span>
+    <span class="text2">ExpertzLab</span>
+</div>
+<div class="content">
+    <div class="slider-wrapper">
+        We built this with
+        <div class="slider">
+            <div class="slider-text1">HTML</div>
+            <div class="slider-text2">CSS</div>
+            <div class="slider-text3">JAVA</div>
+        </div>
+    </div>
+</div>
+<div class="hero">
+    <div class="nav-bar">
+        <div class="nav-logo">
+            ExpertzLab
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a th:href="@{home} ">Home</a></li>
+                <li><a th:href="@{course} ">Course</a></li>
+                <li><a th:href="@{contact}">Contact</a></li>
+                <li><a th:href="@{login}">Login</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner-title">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <h1><span>Programming is</span> like any other <span>sport</span><br> Play to <span>Learn</span>
+        </h1>
+    </div>
+</div>
+<div sec:authorize="isAuthenticated()" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);padding:15px;font-size: 30px;">
+    <b>Welcome :  </b><span sec:authentication="name">
+      </span>
+    <br><br>
+    <form action="/home/userpage" method="get">
+        <button class="button1" formaction="/home/userpage" type="submit">User Home</button></form>
+    <div style="text-align:right">
+        <form th:action="@{/logout}" method="post">
+            <button class="button1" type="submit">Logout</button>
+        </form>
+    </div>
+</div>
+<div class="container2">
+    <div class="row">
+        <div class="box1">
+            <div class="title1">
+                <span class="block1"></span>
+                <h1 class="h1">Course Offering </h1>
+            </div>
+        </div>
+        <br><br>
+        <form action="/viewmore/course" method="get">
+            <div class="column" th:each="c:${activecourse}" >
+                <div class="card">
+                    <div class="front">
+                        <h1 style="margin-top: 30%;font-size: 2.2em;color: aliceblue;" th:text="${c.cname}"></h1>
+                        <br><br><br><br><br>
+                        <p1>
+                            <label style="font-size: 20px; text-align: left;"><b> Starting on: </b></label><label style="text-align: left;" th:text="${c.csdate}"></label><br>
+                            <label style="font-size: 20px; text-align: left;"><b> Course Briefing : </b></label><label style="text-align: left;" th:text="${c.cbrief}"></label>
+                        </p1>
+                    </div>
+                    <div class="back">
+                        <div class="back-content middle">
+                            <button class="button2" style="vertical-align:middle" formaction="/viewmore/course"><span>View More</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -120,17 +120,20 @@ public class usercontroller {
 
     @RequestMapping (path={"/forgetpassword/"},method = RequestMethod.POST)
 //updation display seems not to be working
-    public String getforgetpassword(@RequestParam("useremail")Optional<String> mail,Model model) throws Exception
+    public String getforgetpassword(@RequestParam("useremail")Optional<String> mail,Model model,@RequestParam("useremail") String mail1) throws Exception
     {
-        if (mail.isPresent())
 
-        { User entity = service.getUserbyId(mail.get());
-            model.addAttribute("user", entity);
-        } else {
-            model.addAttribute("user", new User());
+        if(userRepository.findById(mail1).isPresent())
+        {User entity = service.getUserbyId(mail.get());
+         model.addAttribute("user", entity);
+         return "forgetpassword";
         }
-        return "forgetpassword";
+
+        else
+            return "405.html";
+
     }
+
 
     @PostMapping("/admin/signuppass")
     public String userLogin1(@ModelAttribute User user)

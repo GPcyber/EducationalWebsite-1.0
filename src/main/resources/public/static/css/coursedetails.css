@@ -1,0 +1,161 @@
+ul {
+    list-style-type: none;
+    margin: -10px;
+    padding: 0;
+    overflow: hidden;
+    background-color:black;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    text-decoration: none;
+    font-family: Arial;
+    }
+
+li {
+    float: left;
+    text-decoration: none;
+    font-family: Arial;
+   }
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 28px;
+    text-decoration: none;
+    font-family: Arial;
+}
+
+li a:hover {
+    background-color:rgb(16, 129, 54);
+    color: whitesmoke;
+    text-decoration: none;
+    font-family: Arial;
+}
+
+.active {
+    background-color: #4CAF50;
+    font-family: Arial;
+}
+.button {
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: tomato;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 15px;
+    font-weight: bolder;
+    border-radius: 8px;
+  }
+
+  .button:hover {
+
+    background-color: #f4511e;
+    color: white;
+    box-shadow: 0 5px black;
+    transform: translateY(4px);
+    border: 2px solid white;
+
+  }
+
+
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 0 10px;
+  }
+
+  /* Remove extra left and right margins, due to padding */
+  .row {margin:2px;}
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+
+  }
+
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin:8px;
+    margin-top:30px;
+    opacity:1;
+    height:550px;
+    background:transparent;
+    color:darkred;
+
+    border: 2px solid black;
+
+
+  }
+  .card:hover{
+      background: none;
+      opacity: 1;
+      box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.8), 0 12px 28px 0 rgba(0, 0, 0, 0.29);
+      font-weight: bold;
+      color: black;
+  }
+  label{
+      font-size: 18px;
+
+  }
+  a{
+      text-decoration: none;
+  }
+  body{
+
+    background-image: url(coursedetailsbackground.jpeg);background-size: cover;background-repeat: repeat;
+  }
+  .buttonuser {
+
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-weight:bolder;
+  }
+
+  .buttonuser {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+  }
+
+  .buttonuser:hover {
+    background-color: #4CAF50;
+    color: white;
+    font-weight:bolder;
+  }

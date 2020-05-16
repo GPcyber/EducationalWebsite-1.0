@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Appliedcourses</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/static/css/adminappliedcourse.css">
+</head>
+<body>
+<header style="margin:0;">
+    <div class="sticky">Applied Courses
+    </div>
+</header>
+<br><hr><br>
+<table class="content-table center" >
+    <thead>
+    <tr>
+        <th>Sno</th>
+        <th>User Name</th>
+        <th>User Email</th>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Start Date</th>
+        <th>Course Detail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p: ${userdetails}">
+        <td th:text="${p.sno}"></td>
+        <td th:text="${p.applieduser}"></td>
+        <td th:text="${p.appliedemail}"></td>
+        <td th:text="${p.cid}"></td>
+        <td th:text="${p.cname}"></td>
+        <td th:text="${p.cdate}"></td>
+        <td th:text="${p.cdetail}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<form action="/home/admin" method="get">
+    <button class="button3" formaction="/home/admin">Admin Home</button></form>
+</body>
+</html>

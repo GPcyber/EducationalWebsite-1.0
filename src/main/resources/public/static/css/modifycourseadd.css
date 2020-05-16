@@ -1,0 +1,55 @@
+body{
+background-image: url(adminbackground.jpeg);background-size: 100%;
+}
+input[type=text],input[type=password], select {
+    width: 25%;
+    padding: 5px;
+    width: 200px;
+    margin: 5px;
+    display: inline-block;
+    border: 2px solid grey;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  label{
+      color: black;
+      font-weight: bolder;
+  }
+      
+
+  @font-face {
+         font-family: myfirst;
+         src: url(RussoOne-Regular.ttf);
+     } 
+        
+  
+      header{
+          font-family:myfirst ;
+          color: white;
+          font-size: x-large;
+          margin-left: 10px;
+      }
+  
+        
+      .button3 {
+          background-color: white; 
+          color: black; 
+          border: 2px solid crimson;
+          border-radius: 8px;
+          width:200px ;
+          height:40px ;
+          font-size: large;
+          font-weight: bold;            
+          margin-left: 10px;
+           }
+  
+      .button3:hover {
+          background-color:crimson;
+          color: white;
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+
+      div {
+    border-radius: 8px;      
+  }

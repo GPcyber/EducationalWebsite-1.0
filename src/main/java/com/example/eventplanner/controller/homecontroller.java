@@ -9,7 +9,6 @@ import com.example.eventplanner.repository.UserRepository;
 import com.example.eventplanner.repository.appliedRepository;
 import com.example.eventplanner.repository.enquiryRepository;
 import com.example.eventplanner.service.Courseservice;
-//import jdk.nashorn.internal.runtime.regexp.joni.ast.StringNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -45,18 +44,7 @@ public class homecontroller {
         model.addAttribute("activecourse",entity);
         return "home";
     }
-   /*
-    @GetMapping("home")
-    public String gethome()
-    {
-    return "home.html";
-    }
 
-    @GetMapping("/course")
-    public String coursedetails()
-    {
-        return "Course Details.html";
-    }*/
    @GetMapping("/course")
    public String getActiveCourse (Model model){
        List entity=service.getActiveCourse();

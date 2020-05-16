@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Contact us</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/contact.css">
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+.row {
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  
+}
+.column {
+  float: left;
+  width: 49%;
+  padding: 10px;
+  color:white;
+}
+</style>
+<body>
+<ul>
+    <li><a th:href="@{home}">Home</a></li>
+    <li><a th:href="@{course}">Courses</a></li>
+    <li><a  class="active" th:href="@{contact}">Contact</a></li>
+    <li  style="float: right;"><a th:href="@{login}">Login</a></li>
+</ul>
+<br><br>
+<div sec:authorize="isAuthenticated()" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);padding:15px;font-size: 30px;">
+    <b>Welcome :  </b><span sec:authentication="name">
+        </span>
+    <br><br>
+    <form action="/home/userpage" method="get">
+        <button class="buttonuser" formaction="/home/userpage" type="submit">User Home</button></form>
+    <div style="text-align:right">
+        <form th:action="@{/logout}" method="post">
+            <button class="buttonuser" type="submit">Logout</button>
+        </form></div></div>
+<div class="row">
+    &nbsp;&nbsp;
+    <div class="column">
+        <h1 style="text-align: center;color: whitesmoke;margin-top:5%"> Enquiry</h1>
+        <hr color="white">
+        <form action="/contact/enquirysubmit" method="post" >
+            <div class="form-group" style="margin-top: 10%;">
+                <input type="text" name="name"  class="form-control" required>
+                <label>Name</label></div><br><br><br>
+            <div class="form-group " >
+                <input type="text"  name="qualification"  class="form-control" required>
+
+                <label>Qualification</label></div><br><br><br>
+            <div class="form-group " >
+                <input type="text"  name="mobilephone"  class="form-control" required>
+                <label>Mobile Number</label></div><br><br><br>
+            <div class="form-group ">
+                <input type="email"  name="email"  class="form-control" required>
+                <label><b>Email:</b></label></div><br><br><br>
+            <div class="form-group" th:each="c:${course}" >
+                <label>Course ID: </label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input  type="text"  name="courseID" th:value="${c.cid}"  readonly>
+            </div>
+            <br>
+            <button class="button"  formaction="/contact/enquirysubmit" type="submit" onclick="myfunction()" >Submit</button>
+
+        </form>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="column" >
+        <article>
+            <h1 style="color: whitesmoke;text-align: center;margin-top: 5%;">Contact Us</h1>
+            <hr color="white"><br><br><br>
+            <p style="color: whitesmoke;text-align: center;font-size: 1.5em;text-align:center">
+                Expertzlab, 2nd Floor, ACT Chambers,<br>
+                MKK Nair Road ( Palarivattom - Kaloor Rd), Palarivattom,<br>
+                Landmark: Axis Bank Palarivattom, Kochi, Kerala 682025<br>
+                Phone : 9988776655,
+                Email :enquiry@expertzlabz.co.in
+            </p>
+        </article>
+    </div>
+</div>
+<script>
+function myfunction() {
+alert("Submitted Successfully");
+}
+</script>
+
+
+</body>
+</html>

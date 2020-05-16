@@ -1,0 +1,107 @@
+body{
+background-image: url(adminbackground.jpeg);background-size:100%
+}
+@font-face {
+    font-family: myfirst;
+    src: url(RussoOne-Regular.ttf);
+} 
+table {
+    border: #f5f5f5; 
+    background-color: white;  
+    width: 75%;
+   
+    }
+   
+    th, td {
+    text-align: center;
+    padding: 8px;
+    
+    }
+   
+    table.center {
+    margin-left:auto; 
+    margin-right:auto;
+     }
+   
+    th {
+    background-color: crimson;
+    color: white;
+    } 
+    
+    tr:hover {
+        background-color:#f5f5f5;
+        }
+   
+    tr:hover {
+    background-color:#f00861a4;
+    color: whitesmoke;
+    }  
+    a:link {
+        background-color: #cc2e43;
+        color: white;
+        
+        text-align: center;
+        text-decoration: none;
+        font-weight:900;
+        display: inline-block;
+        
+        }
+        a:hover {
+        color: white;
+        text-decoration: underline;
+               
+        
+        }
+        td:hover
+        {
+            background-color: rgb(255, 50, 118);
+            color: whitesmoke;
+        }
+
+
+ header{
+     font-family:myfirst ;
+     color: white;
+     font-size: x-large;
+     margin-left: 10px;
+ }
+
+
+ .content-table{
+     border-collapse: collapse;
+     margin: 25px 0;
+     font-size: 0.9em;
+     min-width:400px ;
+     border-radius: 5px 5px 0 0;
+     overflow: hidden;
+     box-shadow: 0 0 90px rgba(0, 0, 0, 0.15);
+     font-family: fantasy;
+     text-align: center; 
+      
+ }
+
+ .content-table thead tr{
+     background-color: crimson;
+     color: white;
+     font-weight: bold;
+     font-size: x-large;
+     text-align: center;
+    
+ }
+
+ .button3 {
+     background-color: white; 
+     color: black; 
+     border: 2px solid crimson;
+     border-radius: 8px;
+     width:400px ;
+     height:40px ;
+     font-size: large;
+     font-weight: bold;            
+      }
+
+ .button3:hover {
+     background-color:crimson;
+     color: white;
+     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+ }

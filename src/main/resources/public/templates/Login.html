@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en" xmlns:th="http://thymeleaf.org">
+    <title>SignUp and Login</title>
+    <link rel="stylesheet"  type="text/css" href="/static/css/loginpage.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div style="margin: 15px;">
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="/user/signup" method="post">
+                <h1>Create Account</h1>
+                <hr>
+                <br>
+                <label for><b>Name</b></label>
+                <input type="text" name="username" placeholder="Enter Name" required><br>
+                <label for><b>Mobile Number</b></label>
+                <input  type="text"  name="usermobile" placeholder="Enter Mobile Number" required><br>
+                <label for><b>Email</b></label>
+                <input type="text"  name="useremail" placeholder="Enter Email" required><br>
+                <label for><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="userpassword" id="txtPassword" required><br>
+                <label for><b>Confirm Password</b></label>
+                <input type="password" placeholder="Confirm Password" name="psw-repeat" id="txtConfirmPassword" required><br>
+                <button style="margin:15px;font-size:15px" formaction="/user/signup" type="submit" onclick="Validate();myfunction()" >Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="/login" method="post" >
+                <h1>Sign In</h1>
+                <br><br>
+                <label for><b>Email</b></label>
+                <input type="email"  placeholder="Enter Email" name="useremail" required>
+                <br><br>
+                <label for><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="userpassword" required><br>
+                <input class="button2" style="width: fit-content;" type="submit" value="Login">
+                    <br>
+                    <a th:href="@{home/forgetpasswordhome}">Forgot Password?</a>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello</h1>
+                    <p>Enter your details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	const signUpButton = document.getElementById('signUp');
+	const signInButton = document.getElementById('signIn');
+	const container = document.getElementById('container');
+
+	signUpButton.addEventListener('click', () => {
+		container.classList.add("right-panel-active");
+	});
+	signInButton.addEventListener('click', () => {
+		container.classList.remove("right-panel-active");
+	});
+</script>
+</body>
+</html>
