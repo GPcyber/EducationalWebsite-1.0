@@ -78,8 +78,6 @@ public class appliedcourse {
         this.cdetail = cdetail;
     }
 
-
-
     public appliedcourse(Integer sno) {
         this.sno = sno;
     }

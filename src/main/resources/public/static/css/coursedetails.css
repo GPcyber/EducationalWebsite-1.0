@@ -131,7 +131,7 @@ li a:hover {
   }
   body{
 
-    background-image: url(coursedetailsbackground.jpeg);background-size: cover;background-repeat: repeat;
+    background-image: url(/static/images/coursedetailsbackground.jpeg);background-size: cover;background-repeat: repeat;
   }
   .buttonuser {
 

@@ -13,13 +13,10 @@ public class User  {
 
 
     Long uid;
-
     @Column(name = "name")
     String username;
-
     @Column(name = "mobileumber")
     String usermobile;
-
     @Id
     String useremail;
 
@@ -48,20 +45,6 @@ public class User  {
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
     }
-/*  public User(Set<Course> newcourse) {
-        this.newcourse = newcourse;
-    }
-
-    @ManyToMany(mappedBy = "products")
-    Set<Course> newcourse;
-
-    public Set<Course> getNewcourse() {
-        return newcourse;
-    }
-
-    public void setNewcourse(Set<Course> newcourse) {
-        this.newcourse = newcourse;
-    }*/
 
     public User()
     {}

@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -51,15 +50,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/user/signup").permitAll()
                         .antMatchers("/home.html").permitAll()
-                        .antMatchers("/templates/home").permitAll()
-                        .antMatchers("/templates/home.html").permitAll()
-                        .antMatchers("/templates/Contact.html").permitAll()
-                        .antMatchers("/templates/Course Details.html").permitAll()
-                        .antMatchers("/templates/Login.html").permitAll()
                         .antMatchers("/Login.html").permitAll()
                         .antMatchers("/Contact.html").permitAll()
                         .antMatchers("/Course Details.html").permitAll()
-                        .antMatchers("/templates/home.html").permitAll()
+                        .antMatchers("/aboutus.html").permitAll()
+                        .antMatchers("aboutus.html").permitAll()
+                        .antMatchers("/templates/aboutus.html").permitAll()
+
                 .antMatchers("/contact").permitAll()
                 .antMatchers("/viewmore/course").permitAll()
                         .antMatchers("/home/forgetpasswordhome.html").permitAll()

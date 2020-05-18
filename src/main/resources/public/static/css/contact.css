@@ -139,5 +139,5 @@ label {
     font-weight:bolder;
   }
   body{
-  background-image: url(contactbackground.jpeg);background-repeat: no-repeat;background-size: cover;
+  background-image: url(/static/images/contactbackground.jpeg);background-repeat: no-repeat;background-size: cover;
   }

@@ -20,7 +20,7 @@ public class Course {
 
     @Column(name = "Startingdate")
     String csdate;
-//  public   Long cflag;
+
     public String cflag;
 
     @Column(name = "briefing")
@@ -39,26 +39,6 @@ public class Course {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
-/*@ManyToMany()
-    @JoinTable(
-            name = "course_user",
-            joinColumns = {@JoinColumn(name = "cid")},
-            inverseJoinColumns = {@JoinColumn(name = "useremail")}
-
-    )
-    Set<User> newuser;
-
-    public Course(Set<User> newuser) {
-        this.newuser = newuser;
-    }
-
-    public Set<User> getNewuser() {
-        return newuser;
-    }
-
-    public void setNewuser(Set<User> newuser) {
-        this.newuser = newuser;
-    }*/
 
     public Course(String cflag) {
         this.cflag = cflag;
@@ -101,30 +81,10 @@ public class Course {
     public void setCdetail(String cdetail) {
         this.cdetail = cdetail;
     }
-/* public Course(Long cid, String cname, String cduration, String csdate, Long cflag) {
-        this.cid = cid;
-        this.cname = cname;
-        this.cduration = cduration;
-        this.csdate = csdate;
-        this.cflag = cflag;
-    }
-
-    public Course(Long cflag) {
-        this.cflag = cflag;
-    }
-
-    public Long getCflag() {
-        return cflag;
-    }
-
-    public void setCflag(Long cflag) {
-        this.cflag = cflag;
-    }*/
 
     public Course() {
 
     }
-
 
     public Long getCid() {
         return cid;

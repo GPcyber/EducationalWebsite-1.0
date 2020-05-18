@@ -17,10 +17,10 @@
 </style>
 <body>
 <ul>
-    <li><a th:href="@{home}">Home</a></li>
-    <li><a class="active" th:href="@{course}">Courses</a></li>
-    <li><a th:href="@{contact}">Contact</a></li>
-    <li  style="float: right;"><a th:href="@{login}">Login</a></li>
+    <li><a th:href="@{/home}">Home</a></li>
+    <li><a class="active" th:href="@{/course}">Courses</a></li>
+    <li><a th:href="@{/contact}">Contact</a></li>
+    <li  style="float: right;"><a th:href="@{/login}">Login</a></li>
 </ul>
 <br><br>
 <div sec:authorize="isAuthenticated()" style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);padding:15px;font-size: 30px;">
@@ -44,8 +44,9 @@
             <label style="text-align: left;float: left;font-weight: bolder;text-decoration: underline;">Course Detail:  </label><label th:text="${c.cdetail}"></label><br><br>
             <div sec:authorize="isAuthenticated()">
                 <a th:href="@{'/apply/' + ${c.cid}}" onclick="myfunction()" class="button" style="float: left;" >Apply Now</a></div>
-            <div sec:authorize="isAnonymous()"><a href="/login"  class="button">Apply Now</a></div>
-            <a th:href="@{'/contact/' + ${c.cid}}" class="button" style="float: left;">Enquire Now</a>
+            <div sec:authorize="isAnonymous()">
+                <a th:href="@{/login}" style="float: left;"  class="button">Apply Now</a></div>
+            <a th:href="@{'/contact/' + ${c.cid}}" class="button" style="float: right;">Enquire Now</a>
         </div>
     </div>
 </div>

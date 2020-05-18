@@ -1,5 +1,5 @@
 body{
-background-image: url(adminbackground.jpeg);
+background-image: url(/static/images/adminbackground.jpeg);
 }
 @font-face {
        font-family: myfirst;

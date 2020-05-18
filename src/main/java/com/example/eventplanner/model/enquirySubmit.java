@@ -15,8 +15,6 @@ public class enquirySubmit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     Long eid;
-
-
     String name;
     String qualification;
     Long mobilephone;

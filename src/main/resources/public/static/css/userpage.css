@@ -1,6 +1,6 @@
 /* Create two equal columns that floats next to each other */
 body{
-background-image: url(userpagebackground.jpeg);background-repeat: no-repeat;background-size: cover;
+background-image: url(/static/images/userpagebackground.jpeg);background-repeat: no-repeat;background-size: cover;
 }
 header {
     background-color: rgb(7, 47, 122);

@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url(loginbackground.jpeg);
+    background-image: url(/static/images/loginbackground.jpeg);
     background-size: 100%;
 
 	display: flex;

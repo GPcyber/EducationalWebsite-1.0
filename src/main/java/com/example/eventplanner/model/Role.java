@@ -8,8 +8,6 @@ import javax.persistence.Table;
 @Table(name = "role")
 public class Role{
 
-
-
     @Id
     Integer roleid;
     String designation;

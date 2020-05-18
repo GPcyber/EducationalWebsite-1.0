@@ -2,8 +2,6 @@ package com.example.eventplanner.controller;
 import com.example.eventplanner.model.Course;
 import com.example.eventplanner.model.User;
 import com.example.eventplanner.model.appliedcourse;
-import com.example.eventplanner.model.appliedcourse;
-import com.example.eventplanner.model.enquirySubmit;
 import com.example.eventplanner.repository.Courserepository;
 import com.example.eventplanner.repository.UserRepository;
 import com.example.eventplanner.repository.appliedRepository;
@@ -15,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -35,8 +32,6 @@ public class usercontroller {
     @Autowired
     UserRepository userRepository;
 
-    //user signup
-
     @PostMapping("/user/signup")
     public String signupLogin(@ModelAttribute User user,Model model) throws Exception
     {
@@ -44,30 +39,24 @@ public class usercontroller {
         userRepository.save(user);
         List entity=service.getActiveCourse();
         model.addAttribute("activecourse",entity);
-        //return "userpage";
         return "Login.html";
     }
-
 
     @GetMapping("/userpage")
     public String getuserhomepage()
     {
         return "userpage";
     }
-
-
     @GetMapping("/home/admin")
     public String getAdmin()
     {
         return "adminhome.html";
     }
-
     @GetMapping("home/admin/logout")
     public String afterLogout()
     {
         return "home.html";
     }
-
 
 
     @RequestMapping(path = {"/admin/activate/{uemail}"})
@@ -92,26 +81,6 @@ public class usercontroller {
         return "redirect:/admin/userlist";
     }
 
-/*    @GetMapping("home/forgetpasswordhome")
-    public String gethome()
-    {
-        return "forgetpasswordhome.html";
-    }
-
-    @RequestMapping (path={"/forgetpassword/"},method = RequestMethod.POST)
-    //updation display seems not to be working
-    public  String getforgetpassword(@RequestParam("uemail")Optional<String> mail,Model model) throws Exception
-    {
-        if (mail.isPresent())
-
-        {       User entity = service.getUserbyId(mail.get());
-            model.addAttribute("user", entity);
-        } else {
-            model.addAttribute("user", new User());
-        }
-        return "forgetpassword";
-    }*/
-
     @GetMapping("home/forgetpasswordhome")
     public String gethome()
     {
@@ -119,21 +88,16 @@ public class usercontroller {
     }
 
     @RequestMapping (path={"/forgetpassword/"},method = RequestMethod.POST)
-//updation display seems not to be working
     public String getforgetpassword(@RequestParam("useremail")Optional<String> mail,Model model,@RequestParam("useremail") String mail1) throws Exception
     {
-
         if(userRepository.findById(mail1).isPresent())
         {User entity = service.getUserbyId(mail.get());
          model.addAttribute("user", entity);
          return "forgetpassword";
         }
-
         else
             return "405.html";
-
     }
-
 
     @PostMapping("/admin/signuppass")
     public String userLogin1(@ModelAttribute User user)
@@ -141,6 +105,7 @@ public class usercontroller {
         userRepository.save(user);
         return "redirect:/home/";
     }
+
     @GetMapping("/admin/userlist")
     public String getAdminUserList(Model model)
     {   List<User>entity =userRepository.findAll();
@@ -152,13 +117,13 @@ public class usercontroller {
         model.addAttribute( "enquiry",enquiryrepository.findAll());
         return "enquirydetails";
     }
+
     @GetMapping("/enquiry/delete/{eid}")
     public String deleteEnquiry(Model model, @PathVariable("eid") Long id){
         enquiryrepository.deleteById((id));
         return "redirect:/admin/enquirydetails";
     }
-    /////////////////////////////////////////
-    // This will not display multiple courses for auser who applied multiple times
+
     @GetMapping("/appliedcourse")
     public String getAppliedCoursesListUser(Model model)
     {
@@ -170,22 +135,14 @@ public class usercontroller {
        {
         User newuser=entity.get();
         Set<Course> c1= newuser.getCourses();
-       /* appliedcourse ac=new appliedcourse();
-        ac.getUserinfo().add(newuser);
-        ac.getCourseinfo().add((Course) c1);
-        appliedrepository.save(ac);*/
         model.addAttribute("userappliedcourse",c1);
-
        }
         return "userappliedcourse.html";
     }
-    ///////////////////////////a
-    ///// Admin sees all who applied
+
     @GetMapping("/admin/appliedcourse")
     public String getAppliedCoursesListAdmin(Model model)
-    {  // List<appliedcourse>entity =appliedrepository.findAll();
-        //model.addAttribute("appliedcourse",entity);
-     //   List<appliedcourse>u1=appliedrepository.findAll();
+    {
         List<appliedcourse>entity=appliedrepository.findAll();
         model.addAttribute("userdetails",entity);
         return "adminappliedcourse.html";

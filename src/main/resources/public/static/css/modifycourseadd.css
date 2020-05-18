@@ -1,5 +1,5 @@
 body{
-background-image: url(adminbackground.jpeg);background-size: 100%;
+background-image: url(/static/images/adminbackground.jpeg);background-size: 100%;
 }
 input[type=text],input[type=password], select {
     width: 25%;

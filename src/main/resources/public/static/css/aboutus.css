@@ -1,0 +1,86 @@
+@font-face{
+    font-family: headerfont;
+    src: url(BarlowCondensed-Regular.ttf);
+    
+}
+
+
+body{
+    background-image: url(/static/images/aboutusbackground.jpeg);
+    background-size: 100%;
+}
+
+header{
+    font-family: headerfont;
+    text-align: center;
+    font-size: 40px;
+    
+}
+
+.column1{
+    width: 50%;
+    float: left;
+}   
+
+
+.column2{
+    width: 50%;
+    float: right;
+}
+
+
+
+.card1 {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 98%;
+    text-align: center;
+    border: 2px solid whitesmoke;
+
+  }
+
+  .card2 {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;
+    border: 2px solid whitesmoke;
+  }
+  
+  .card3 {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;    
+    border: 2px solid whitesmoke;
+  }
+
+  .card4 {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;    
+    border: 2px solid whitesmoke;    
+  }
+
+
+  .card1:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .card2:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .card3:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .card4:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  h2{
+      text-align: center;
+            
+  }

@@ -23,7 +23,6 @@ public class EventplannerApplication {
 		@Autowired
 		private Rolerepository rolerepository;
 
-
 		@Override
 		public void run(String... args) throws Exception {
 
@@ -37,6 +36,7 @@ public class EventplannerApplication {
 			admin.setDesignation("admin");
 			rolerepository.save(admin);
 		}
+
 		@Component
 		class usercommandliner implements CommandLineRunner {
 
@@ -46,17 +46,14 @@ public class EventplannerApplication {
 			@Override
 			public void run(String... args) throws Exception {
 
-
 				User user1=new User();
 				user1.setUid(Long.parseLong("2"));
 				user1.setUsername("admin");
 				user1.setUseremail("admin@expertzlab");
 				user1.setUserpassword("1234");
 				user1.setUsermobile("7897897897");
-
 				userrepository.save(user1);
-
 			}
 	    }
 	}
-	}
+}

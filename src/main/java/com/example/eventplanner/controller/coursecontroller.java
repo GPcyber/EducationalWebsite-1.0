@@ -1,17 +1,13 @@
 package com.example.eventplanner.controller;
 
-
 import com.example.eventplanner.model.Course;
-import com.example.eventplanner.model.User;
 import com.example.eventplanner.repository.Courserepository;
 import com.example.eventplanner.repository.UserRepository;
 import com.example.eventplanner.service.Courseservice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +32,6 @@ public class coursecontroller {
     public String getCourseList(Model model){
         model.addAttribute("adminlist",courserepository.findAll());
         return "adminlist";
-
     }
 
     @GetMapping("/delete/{cid}")
@@ -58,7 +53,6 @@ public class coursecontroller {
     public String neweditEmployeeById(Model model, @PathVariable("cid") Optional<Long> cid) throws Exception {
         if (cid.isPresent()) {
             Course entity = service.getCourseById(cid.get());
-
             model.addAttribute("course", entity);
 
         } else {
@@ -67,12 +61,10 @@ public class coursecontroller {
         return "modifycourseadd";
     }
 
-    //@ResponseBody
     @GetMapping("/activate/{cid}")
     public String activate(@PathVariable ("cid") Optional<Long> id) throws Exception{
         if (id.isPresent()) {
             Course entity = service.getCourseById(id.get());
-            // entity.setCflag(Long.parseLong("1"));
             entity.setCflag(("1"));
             courserepository.save(entity);
             return "redirect:/admin/courseDetails";
@@ -81,12 +73,11 @@ public class coursecontroller {
             return "sorry this course is not activated";
     }
 
-    //@ResponseBody
     @GetMapping("/deactivate/{cid}")
     public String deactivate(@PathVariable ("cid") Optional<Long> id) throws Exception{
         if (id.isPresent()) {
             Course entity = service.getCourseById(id.get());
-            //entity.setCflag(Long.parseLong("0"));
+
             entity.setCflag((""));
             courserepository.save(entity);
             return "redirect:/admin/courseDetails";
@@ -94,16 +85,17 @@ public class coursecontroller {
         else
             return "sorry this course is not deactivated";
     }
+
     @GetMapping("/admin/activecourses")
     public String activecourse( Model model) throws Exception
     {
         //4 slashes the other method
-        // List<Course> entity=service.getAllCourses();
-        //// List entity=service.getCourseBycflag();
-        // Course course1=new Course();
-        //List<Course> list=courserepository.findAll();
-        // Course cnewcourse= list.getClass();
-        //if(list.contains(course1.getCflag()))
+        /* List<Course> entity=service.getAllCourses();
+         List entity=service.getCourseBycflag();
+         Course course1=new Course();
+         List<Course> list=courserepository.findAll();
+         Course cnewcourse= list.getClass();
+         if(list.contains(course1.getCflag()))*/
         List entity=service.getActiveCourse();
         model.addAttribute("activelist",entity);
         return "activelist";

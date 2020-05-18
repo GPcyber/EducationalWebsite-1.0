@@ -16,17 +16,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.*;
+
 @Transactional
 @Controller
 public class homecontroller {
+
     @PersistenceContext
     EntityManager entityManager = null;
-
     @Autowired
     Courserepository courserepository;
     @Autowired
@@ -62,21 +62,18 @@ public class homecontroller {
     {
        return  "Login.html";
     }
-
     @GetMapping("/home/userpage")
     public String getUserpage()
     {
         return  "userpage.html";
     }
 
-
     @PostMapping("/contact/enquirysubmit")
     public String enquirySubmit(@ModelAttribute enquirySubmit enquirysubmit){
         enquiryrepository.save(enquirysubmit);
-
         return "Contact.html";
     }
-    /*4th update*/
+
     @GetMapping("/viewmore/course")
     public String getcoursedetails(Model model)
     {
@@ -84,35 +81,25 @@ public class homecontroller {
         model.addAttribute("activecourse",entity);
         return "Course Details.html";
     }
+
     @GetMapping("/contact/{cid}")
     public String getenquiryfromcourses(Model model,@PathVariable("cid") Optional<Long> cid  ) throws Exception
     {
-        // try and pass the values of user and his email address
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         Optional<User> newuser=userRepository.findById(currentPrincipalName);
         { if (newuser.isPresent())
-
             {User newuser1=service.getUserbyId(currentPrincipalName);
-                {
-                    /*if (cid.isPresent()) {
-                        Course entity = service.getCourseById(cid.get());
-                        enquirySubmit enquirysubmit = new enquirySubmit(entity.getCid(), newuser1.getUsername(), Long.parseLong(newuser1.getUsermobile()), currentPrincipalName);
-                        model.addAttribute("enquirysubmitdetails", enquirysubmit);
-                    }*/
-
-                    if (cid.isPresent()) {
+                {       if (cid.isPresent()) {
                         Course entity = service.getCourseById(cid.get());
                         model.addAttribute("course", entity);
-
                     }
-
                 }
             }
         }
         return "Contact.html";
     }
-    /* This code is for apply course controller*/
 
     @GetMapping("/apply/{cid}")
     @Transactional
@@ -137,10 +124,7 @@ public class homecontroller {
             if(cid.isPresent())
            {
             Course entity = service.getCourseById(cid.get());
-            //appliedcourse newappliedcourse= new appliedcourse(currentPrincipalName,authname,entity.getCid(),entity.getCname(),entity.getCduration());
-               entityManager.createNativeQuery("INSERT INTO user_course (Name, Email ,cid , CourseDetail, CourseName, StartDate) VALUES (?,?,?,?,?,?)")
-
-                     //  .setParameter(1,@GeneratedValue(strategy = GenerationType.IDENTITY))
+            entityManager.createNativeQuery("INSERT INTO user_course (Name, Email ,cid , CourseDetail, CourseName, StartDate) VALUES (?,?,?,?,?,?)")
                        .setParameter(1,authname)
                        .setParameter(2,currentPrincipalName)
                        .setParameter(3,entity.getCid())
@@ -148,13 +132,10 @@ public class homecontroller {
                        .setParameter(5,entity.getCsdate())
                        .setParameter(6,entity.getCdetail())
                        .executeUpdate();
-
             Set<Course> ent=newuser1.getCourses();
             ent.add(entity);
             userRepository.save(newuser1);
-
            }
-
         }
      }
         return "userpage.html";

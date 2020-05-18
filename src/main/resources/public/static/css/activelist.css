@@ -5,7 +5,7 @@
     src: url(RussoOne-Regular.ttf);
     }
     body{
-    background-image: url(adminbackground.jpeg);
+    background-image: url(/static/images/adminbackground.jpeg);
     background-size: 100%
     }
     h2{
